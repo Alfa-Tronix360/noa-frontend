@@ -2,6 +2,116 @@
 
 ---
 
+## 8. Funcionalidades Implementadas no Protótipo Atual
+
+Esta seção descreve o comportamento implementado no frontend mock-first para orientar a futura integração com backend.
+
+### 8.1 Painel do operador
+
+Rota: `/scanner`
+
+Conta mock: `Leitor QR`
+
+Responsabilidades:
+
+- validar QR codes de convites digitais;
+- cadastrar clientes que chegaram ao local sem conta previa;
+- reservar mesa para cliente walk-in;
+- ocupar mesa imediatamente;
+- marcar mesa reservada como ocupada;
+- liberar mesa ocupada ou reservada para voltar ao estado vaga;
+- consultar mesas vagas, reservadas, ocupadas e em manutencao;
+- consultar historico de reservas e ocupacoes locais.
+
+Estados usados nas mesas:
+
+```txt
+available   -> vaga
+reserved    -> reservada
+occupied    -> ocupada
+maintenance -> manutencao
+```
+
+### 8.2 Mapa, areas e mesas
+
+Rota admin: `/admin/mesas`
+
+O mapa do Palace e composto por:
+
+- areas geometricas;
+- mesas posicionadas dentro ou fora das areas;
+- palco/ambiente de referencia visual;
+- cores, nomes, descricoes e precos por area.
+
+Edicao de areas:
+
+- clique seleciona a area e abre a edicao;
+- duplo clique ativa movimento pelo mouse;
+- arrastar as bordas aumenta ou diminui largura/altura;
+- e possivel unir duas areas;
+- ao unir areas, as mesas da segunda area passam para a primeira;
+- o preco do convite e definido na area, nao no evento.
+
+Edicao de mesas:
+
+- clique seleciona a mesa e abre a edicao;
+- duplo clique ativa movimento pelo mouse;
+- a mesa pode mudar de area;
+- a mesa tem status, capacidade, zona, imagem e descricao.
+
+### 8.3 Eventos e bilheteira digital
+
+Rota admin: `/admin/eventos`
+
+O admin publica festas/eventos com bilheteira. O evento publicado usa o mapa atual como base para gerar lugares.
+
+Regra de preco:
+
+```txt
+preco do convite = preco definido na area da mesa
+```
+
+Nao deve haver preco aleatorio digitado no evento. A configuracao comercial fica no mapa/area.
+
+Rota cliente: `/cliente/eventos`
+
+O cliente pode:
+
+- solicitar evento privado;
+- ver eventos publicados;
+- escolher a mesa/lugar no mapa;
+- comprar convite digital;
+- ver QR/codigo do convite.
+
+### 8.4 Relatorios
+
+Rota admin: `/admin/relatorios`
+
+Relatorios existentes no prototipo:
+
+- reservas por periodo;
+- receita;
+- ocupacao;
+- cancelamentos;
+- top clientes;
+- produtos mais vendidos;
+- mesas mais reservadas;
+- mesas mais vendidas por convites digitais;
+- receita por mesa.
+
+### 8.5 Store mock persistida
+
+O prototipo usa `src/store/venue.store.ts` para persistir no `localStorage`:
+
+- areas do mapa;
+- mesas;
+- eventos publicados;
+- convites digitais;
+- clientes cadastrados pelo operador;
+- reservas/ocupacoes locais feitas pelo operador.
+
+Quando o backend chegar, essa store deve ser substituida por adapters/API mantendo a mesma superficie funcional.
+
 ## 0. Premissa: Mock Data First
 
 Todo o desenvolvimento começa com dados simulados.
