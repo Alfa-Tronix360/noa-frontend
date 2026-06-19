@@ -117,7 +117,7 @@ export const TIME_SLOTS = [
 
 export const VIP_THRESHOLD_AOA = 200_000
 
-export const APP_NAME = 'Palace Lounge'
-export const APP_DESCRIPTION = 'Restaurante Premium em Luanda, Angola'
+export const APP_NAME = 'NOA Beach'
+export const APP_DESCRIPTION = 'Beach Club Premium em Luanda, Angola'
 export const APP_PHONE = '+244 941 805 698'
-export const APP_ADDRESS = 'R. Maj. Kanhangulo Andar, Luanda, Angola'
+export const APP_ADDRESS = 'Luanda, Angola'

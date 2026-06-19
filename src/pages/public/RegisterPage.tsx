@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -49,7 +49,7 @@ export default function RegisterPage() {
       >
         {/* Header */}
         <div className="text-center">
-          <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#B89A67' }}>
+          <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#3D9DBD' }}>
             Bem-vindo
           </p>
           <h1 className="font-display text-3xl text-primary">{APP_NAME}</h1>
@@ -142,7 +142,7 @@ export default function RegisterPage() {
               type="submit"
               disabled={isSubmitting}
               className="w-full flex items-center justify-center gap-2 py-2.5 rounded-md text-sm font-medium transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-50"
-              style={{ backgroundColor: '#D9D0B5', color: '#181818' }}
+              style={{ backgroundColor: '#C9A96E', color: '#0D1B2A' }}
             >
               {isSubmitting
                 ? <span className="w-4 h-4 border-2 border-charcoal border-t-transparent rounded-full animate-spin" />
@@ -163,7 +163,7 @@ export default function RegisterPage() {
   )
 }
 
-/* ── Helpers ─────────────────────────────────────────────────────────────── */
+/* â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const inputCls = (hasError: boolean) => cn(
   'w-full rounded-lg border bg-background px-3 py-2.5 text-sm text-foreground',
   'placeholder:text-muted-foreground/60 outline-none transition-colors',
@@ -180,3 +180,4 @@ function Field({ label, error, children }: { label: string; error?: string; chil
     </div>
   )
 }
+

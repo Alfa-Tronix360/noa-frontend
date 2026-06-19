@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+﻿import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, X } from 'lucide-react'
 import Fuse from 'fuse.js'
@@ -9,7 +9,7 @@ import { ProductImageCard } from '@/components/ui/product-image-card'
 import { ShuffleHero } from '@/components/ui/shuffle-grid'
 import type { MenuCategory } from '@/types'
 
-/* ── Image map — cada item usa uma das imagens da galeria ───────────────── */
+/* â”€â”€ Image map â€” cada item usa uma das imagens da galeria â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const itemImages: Record<string, string[]> = {
   'mi-1':  ['/images/gallery-05.png', '/images/gallery-06.png'],
   'mi-2':  ['/images/gallery-06.png', '/images/gallery-07.png'],
@@ -18,16 +18,16 @@ const itemImages: Record<string, string[]> = {
   'mi-5':  ['/images/gallery-09.png', '/images/gallery-10.png'],
   'mi-6':  ['/images/gallery-10.png', '/images/gallery-11.png'],
   'mi-7':  ['/images/gallery-11.png', '/images/gallery-09.png'],
-  'mi-8':  ['/images/gallery-12.png', '/images/gallery-13.png'],
-  'mi-9':  ['/images/gallery-13.png', '/images/gallery-14.png'],
-  'mi-10': ['/images/gallery-14.png', '/images/gallery-15.png'],
-  'mi-11': ['/images/gallery-15.png', '/images/gallery-13.png'],
+  'mi-8':  ['/images/gallery-12.png', '/images/gallery-13.jpeg'],
+  'mi-9':  ['/images/gallery-13.jpeg', '/images/gallery-01.png'],
+  'mi-10': ['/images/gallery-01.png', '/images/gallery-02.png'],
+  'mi-11': ['/images/gallery-02.png', '/images/gallery-13.jpeg'],
   'mi-12': ['/images/gallery-01.png'],
   'mi-13': ['/images/gallery-02.png'],
   'mi-14': ['/images/gallery-03.png'],
-  'mi-15': ['/images/gallery-16.png', '/images/gallery-17.png'],
-  'mi-16': ['/images/gallery-17.png', '/images/gallery-16.png'],
-  'mi-17': ['/images/gallery-15.png'],
+  'mi-15': ['/images/gallery-04.png', '/images/gallery-05.png'],
+  'mi-16': ['/images/gallery-05.png', '/images/gallery-04.png'],
+  'mi-17': ['/images/gallery-06.png'],
   'mi-18': ['/images/gallery-04.png'],
   'mi-19': ['/images/gallery-03.png', '/images/gallery-04.png'],
   'mi-20': ['/images/gallery-02.png', '/images/gallery-03.png'],
@@ -63,8 +63,8 @@ export default function MenuPage() {
       {/* Header */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-          <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#B89A67' }}>
-            Palace Lounge
+          <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#3D9DBD' }}>
+            NOA Beach
           </p>
           <h1 className="font-display text-4xl md:text-5xl text-foreground">Cardápio</h1>
           <p className="text-muted-foreground mt-2 max-w-lg">
@@ -169,7 +169,7 @@ export default function MenuPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   {item.featured && (
                     <span className="absolute top-2 left-2 text-[10px] font-semibold px-2 py-0.5 rounded-full"
-                      style={{ backgroundColor: '#B89A67', color: '#181818' }}>
+                      style={{ backgroundColor: '#3D9DBD', color: '#0D1B2A' }}>
                       Destaque
                     </span>
                   )}
@@ -188,7 +188,7 @@ export default function MenuPage() {
                   <p className="text-sm font-medium text-foreground leading-tight line-clamp-2 group-hover:text-primary transition-colors">
                     {item.name}
                   </p>
-                  <p className="text-sm font-semibold mt-1.5" style={{ color: '#B89A67' }}>
+                  <p className="text-sm font-semibold mt-1.5" style={{ color: '#3D9DBD' }}>
                     {formatCurrency(item.price)}
                   </p>
                 </div>
@@ -203,7 +203,7 @@ export default function MenuPage() {
         <ShuffleHero
           tag="Os nossos espaços"
           title="Cada visita é uma nova experiência"
-          description="Reserve a sua mesa e descubra o Palace Lounge em toda a sua sofisticação."
+          description="Reserve a sua mesa e descubra o NOA Beach em toda a sua sofisticação."
           ctaLabel="Reservar Agora"
           ctaHref="/contactos"
         />
@@ -213,7 +213,7 @@ export default function MenuPage() {
   )
 }
 
-/* ── Tab button ──────────────────────────────────────────────────────────── */
+/* â”€â”€ Tab button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function TabButton({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
     <button
@@ -224,9 +224,10 @@ function TabButton({ active, onClick, children }: { active: boolean; onClick: ()
           ? 'text-primary-foreground border-transparent'
           : 'border-border text-muted-foreground hover:border-primary/40 hover:text-foreground'
       )}
-      style={active ? { backgroundColor: '#D9D0B5', color: '#181818' } : {}}
+      style={active ? { backgroundColor: '#C9A96E', color: '#0D1B2A' } : {}}
     >
       {children}
     </button>
   )
 }
+

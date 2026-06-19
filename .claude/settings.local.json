@@ -17,7 +17,15 @@
       "PowerShell(Stop-Process *)",
       "PowerShell(Start-Sleep -Seconds 16; Get-Content \"C:\\\\Users\\\\HP\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-HP-Downloads-Reserva-ao\\\\41508381-4150-4db9-8db3-f9cf57a5fb8f\\\\tasks\\\\b97k6p658.output\" -ErrorAction SilentlyContinue | Select-String \"node_modules\" | ForEach-Object { if \\($_ -match \"node_modules/\\([^/\"\"]+\\)\"\\) { $Matches[1] } } | Sort-Object -Unique | Where-Object { $_ -notmatch \"vite|chunks\" })",
       "Bash(Get-ChildItem *)",
-      "PowerShell(npm run *)"
+      "PowerShell(npm run *)",
+      "Bash(powershell -Command ' *)",
+      "mcp__magic__21st_magic_component_inspiration",
+      "Bash(npm run *)",
+      "Bash(npx tsc *)",
+      "Bash(magick --version)",
+      "Bash(convert --version)",
+      "Bash(python -c \"from PIL import Image; print\\('Pillow OK'\\)\")",
+      "Bash(pip install *)"
     ]
   }
 }

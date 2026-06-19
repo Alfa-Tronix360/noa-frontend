@@ -22,7 +22,7 @@ const highlights = [
   {
     icon: Clock,
     title: 'Ambiente Sofisticado',
-    description: 'Um espaço desenhado para criar memórias. Do pequeno-almoço elegante ao jantar íntimo, o Palace é o cenário perfeito.',
+    description: 'Um espaço desenhado para criar memórias. Do pequeno-almoço elegante ao jantar íntimo, o NOA Beach é o cenário perfeito.',
     image: '/images/gallery-07.png',
   },
 ]
@@ -48,7 +48,7 @@ export default function HomePage() {
       {/* ── Hero ──────────────────────────────────────────────────────── */}
       <PrismaHero
         backgroundImage="/images/gallery-01.png"
-        title="Palace Lounge"
+        title="NOA Beach"
         subtitle="Uma experiência gastronómica única no coração de Luanda. Ambiente sofisticado, gastronomia premium e serviço personalizado."
         ctaLabel="Reservar Mesa"
         ctaHref={ROUTES.CONTACTS}
@@ -63,7 +63,7 @@ export default function HomePage() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#B89A67' }}>
+          <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#3D9DBD' }}>
             O que nos distingue
           </p>
           <h2 className="font-display text-4xl md:text-5xl text-foreground">
@@ -90,7 +90,7 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-4 left-4">
-                  <h.icon className="w-5 h-5 mb-1" style={{ color: '#D9D0B5' }} />
+                  <h.icon className="w-5 h-5 mb-1" style={{ color: '#C9A96E' }} />
                   <h3 className="font-display text-lg text-white">{h.title}</h3>
                 </div>
               </div>
@@ -113,7 +113,7 @@ export default function HomePage() {
             className="flex items-end justify-between mb-10"
           >
             <div>
-              <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#B89A67' }}>
+              <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#3D9DBD' }}>
                 Destaques do cardápio
               </p>
               <h2 className="font-display text-3xl md:text-4xl text-foreground">Sabores que surpreendem</h2>
@@ -121,7 +121,7 @@ export default function HomePage() {
             <Link
               to={ROUTES.MENU}
               className="hidden md:flex items-center gap-2 text-sm font-medium transition-colors hover:opacity-80"
-              style={{ color: '#D9D0B5' }}
+              style={{ color: '#C9A96E' }}
             >
               Ver cardápio completo <ArrowRight className="w-4 h-4" />
             </Link>
@@ -149,14 +149,14 @@ export default function HomePage() {
                 <div className="p-3">
                   <p className="text-xs text-muted-foreground mb-0.5">{item.category}</p>
                   <p className="text-sm font-medium text-foreground leading-tight">{item.name}</p>
-                  <p className="text-sm mt-1 font-semibold" style={{ color: '#B89A67' }}>{item.price}</p>
+                  <p className="text-sm mt-1 font-semibold" style={{ color: '#3D9DBD' }}>{item.price}</p>
                 </div>
               </motion.div>
             ))}
           </div>
 
           <div className="mt-6 text-center md:hidden">
-            <Link to={ROUTES.MENU} className="text-sm font-medium" style={{ color: '#D9D0B5' }}>
+            <Link to={ROUTES.MENU} className="text-sm font-medium" style={{ color: '#C9A96E' }}>
               Ver cardápio completo →
             </Link>
           </div>
@@ -165,9 +165,9 @@ export default function HomePage() {
 
       {/* ── Galeria Shuffle ───────────────────────────────────────────── */}
       <ShuffleHero
-        tag="Galeria Palace Lounge"
+        tag="Galeria NOA Beach"
         title="Momentos que ficam na memória"
-        description="Descubra os espaços, os pratos e as experiências que tornam o Palace Lounge único em Luanda. Cada imagem é uma história."
+        description="Descubra os espaços, os pratos e as experiências que tornam o NOA Beach único em Luanda. Cada imagem é uma história."
         ctaLabel="Ver Galeria Completa"
         ctaHref={ROUTES.GALLERY}
       />
@@ -177,7 +177,7 @@ export default function HomePage() {
         <div className="absolute inset-0">
           <img
             src="/images/gallery-12.png"
-            alt="Eventos Palace Lounge"
+            alt="Eventos NOA Beach"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30" />
@@ -190,7 +190,7 @@ export default function HomePage() {
           className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         >
           <div className="max-w-xl">
-            <p className="text-xs tracking-[0.3em] uppercase mb-4" style={{ color: '#B89A67' }}>
+            <p className="text-xs tracking-[0.3em] uppercase mb-4" style={{ color: '#3D9DBD' }}>
               Eventos Privados
             </p>
             <h2 className="font-display text-4xl md:text-5xl text-white mb-6 leading-tight">
@@ -198,12 +198,12 @@ export default function HomePage() {
             </h2>
             <p className="text-base text-white/70 mb-8 leading-relaxed">
               Aniversários, casamentos, eventos corporativos e jantares privados.
-              Deixe que o Palace Lounge transforme a sua ocasião numa experiência inesquecível.
+              Deixe que o NOA Beach transforme a sua ocasião numa experiência inesquecível.
             </p>
             <Link
               to={ROUTES.CONTACTS}
               className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all hover:gap-3"
-              style={{ backgroundColor: '#D9D0B5', color: '#181818' }}
+              style={{ backgroundColor: '#C9A96E', color: '#0D1B2A' }}
             >
               Solicitar Evento <ArrowRight className="w-4 h-4" />
             </Link>
@@ -220,7 +220,7 @@ export default function HomePage() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#B89A67' }}>
+          <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#3D9DBD' }}>
             O que dizem os nossos clientes
           </p>
           <h2 className="font-display text-3xl md:text-4xl text-foreground">Experiências que inspiram</h2>
@@ -229,7 +229,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             { name: 'Francisco Pinto Xavier', rating: 5, comment: 'Uma experiência absolutamente extraordinária. O serviço foi impecável e a comida sublime. Voltaremos com certeza.' },
-            { name: 'Dr. António Bento', rating: 5, comment: 'O Palace Lounge é simplesmente o melhor restaurante de Luanda. Recomendo vivamente.' },
+            { name: 'Dr. António Bento', rating: 5, comment: 'O NOA Beach é simplesmente o melhor restaurante de Luanda. Recomendo vivamente.' },
             { name: 'João Manuel Costa', rating: 4, comment: 'Excelente ambiente e boa comida. O tempo de espera entre pratos foi um pouco longo, mas no geral muito bom.' },
           ].map((r, i) => (
             <motion.div
@@ -243,7 +243,7 @@ export default function HomePage() {
             >
               <div className="flex gap-1">
                 {Array.from({ length: r.rating }).map((_, j) => (
-                  <Star key={j} className="w-4 h-4 fill-current" style={{ color: '#B89A67' }} />
+                  <Star key={j} className="w-4 h-4 fill-current" style={{ color: '#3D9DBD' }} />
                 ))}
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed italic">"{r.comment}"</p>

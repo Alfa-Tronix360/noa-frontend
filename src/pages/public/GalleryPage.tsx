@@ -1,13 +1,16 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Masonry, GalleryImage } from '@/components/ui/masonry'
 
-const images = Array.from({ length: 17 }, (_, i) => ({
-  id: i + 1,
-  src: `/images/gallery-${String(i + 1).padStart(2, '0')}.png`,
-  alt: `Palace Lounge — imagem ${i + 1}`,
-}))
+const images = [
+  ...Array.from({ length: 12 }, (_, i) => ({
+    id: i + 1,
+    src: `/images/gallery-${String(i + 1).padStart(2, '0')}.png`,
+    alt: `NOA Beach — imagem ${i + 1}`,
+  })),
+  { id: 13, src: '/images/gallery-13.jpeg', alt: 'NOA Beach — imagem 13' },
+]
 
 export default function GalleryPage() {
   const [lightbox, setLightbox] = useState<number | null>(null)
@@ -29,12 +32,12 @@ export default function GalleryPage() {
         transition={{ duration: 0.6 }}
         className="mb-12"
       >
-        <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#B89A67' }}>
-          Palace Lounge
+        <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#3D9DBD' }}>
+          NOA Beach
         </p>
         <h1 className="font-display text-4xl md:text-5xl text-foreground">Galeria</h1>
         <p className="text-muted-foreground mt-3 max-w-lg">
-          Espaços, momentos e experiências que definem o Palace Lounge. Clique numa imagem para ampliar.
+          Espaços, momentos e experiências que definem o NOA Beach. Clique numa imagem para ampliar.
         </p>
       </motion.div>
 
@@ -112,3 +115,4 @@ export default function GalleryPage() {
     </div>
   )
 }
+

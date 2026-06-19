@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { motion } from 'framer-motion'
@@ -19,7 +19,7 @@ const contactInfo = [
   { icon: Phone,  label: 'Telefone',  value: APP_PHONE,                href: `tel:${APP_PHONE}` },
   { icon: MapPin, label: 'Morada',    value: APP_ADDRESS,               href: '#map' },
   { icon: Clock,  label: 'Horário',   value: 'Segunda a Domingo: 07h00 – 23h00', href: null },
-  { icon: Mail,   label: 'Email',     value: 'reservas@palacelounge.ao', href: 'mailto:reservas@palacelounge.ao' },
+  { icon: Mail,   label: 'Email',     value: 'reservas@noabeach.ao', href: 'mailto:reservas@noabeach.ao' },
 ]
 
 export default function ContactsPage() {
@@ -43,7 +43,7 @@ export default function ContactsPage() {
       {/* Header */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
         <motion.div variants={fadeUp} initial="hidden" animate="visible">
-          <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#B89A67' }}>
+          <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#3D9DBD' }}>
             Fale connosco
           </p>
           <h1 className="font-display text-4xl md:text-5xl text-foreground">Contactos</h1>
@@ -69,8 +69,8 @@ export default function ContactsPage() {
                 className="rounded-xl border border-border/40 bg-surface p-4 flex items-start gap-4 hover:border-primary/40 transition-colors"
               >
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-                  style={{ backgroundColor: 'rgba(184,154,103,0.15)' }}>
-                  <item.icon className="w-5 h-5" style={{ color: '#B89A67' }} />
+                  style={{ backgroundColor: 'rgba(61,157,189,0.12)' }}>
+                  <item.icon className="w-5 h-5" style={{ color: '#3D9DBD' }} />
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground mb-0.5">{item.label}</p>
@@ -94,7 +94,7 @@ export default function ContactsPage() {
             style={{ height: '420px' }}
           >
             <Map className="w-full h-full" center={PALACE_COORDS} zoom={15}>
-              <MapMarker coordinates={PALACE_COORDS} color="#D9D0B5" label={APP_NAME} />
+              <MapMarker coordinates={PALACE_COORDS} color="#C9A96E" label={APP_NAME} />
               <MapControls />
 
               {/* Overlay card */}
@@ -111,7 +111,7 @@ export default function ContactsPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         <div className="max-w-2xl">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-8">
-            <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#B89A67' }}>Envie uma mensagem</p>
+            <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#3D9DBD' }}>Envie uma mensagem</p>
             <h2 className="font-display text-3xl text-foreground">Como podemos ajudar?</h2>
           </motion.div>
 
@@ -155,7 +155,7 @@ export default function ContactsPage() {
                 type="submit"
                 disabled={isSubmitting}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-medium transition-all hover:opacity-90 active:scale-95 disabled:opacity-50"
-                style={{ backgroundColor: '#D9D0B5', color: '#181818' }}
+                style={{ backgroundColor: '#C9A96E', color: '#0D1B2A' }}
               >
                 {isSubmitting
                   ? <><span className="w-4 h-4 border-2 border-charcoal border-t-transparent rounded-full animate-spin" /> A enviar…</>
@@ -181,7 +181,7 @@ export default function ContactsPage() {
   )
 }
 
-/* ── Helpers ─────────────────────────────────────────────────────────────── */
+/* â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const inputCls = (hasError: boolean) => cn(
   'w-full rounded-lg border bg-surface px-3 py-2.5 text-sm text-foreground',
   'placeholder:text-muted-foreground/60 outline-none transition-colors',
@@ -198,3 +198,4 @@ function Field({ label, error, children }: { label: string; error?: string; chil
     </div>
   )
 }
+
