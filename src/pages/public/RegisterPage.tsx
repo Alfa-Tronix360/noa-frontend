@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -8,13 +8,14 @@ import { registerSchema, type RegisterInput } from '@/lib/validators'
 import { ROUTES, APP_NAME } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 import { useAuthStore } from '@/store/auth.store'
-import { mockClients } from '@/data'
-
+import { http } from '@/services/api/http'
+import type { UserRole } from '@/types'
 export default function RegisterPage() {
   const navigate = useNavigate()
   const login = useAuthStore(s => s.login)
   const [showPassword, setShowPassword] = useState(false)
-  const [showConfirm, setShowConfirm]   = useState(false)
+  const [showConfirm, setShowConfirm] = useState(false)
+  const [serverError, setServerError] = useState('')
 
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<RegisterInput>({
     resolver: zodResolver(registerSchema),
@@ -22,23 +23,48 @@ export default function RegisterPage() {
   })
 
   const onSubmit = async (data: RegisterInput) => {
-    await new Promise(r => setTimeout(r, 700))
-    // Mock: auto-login with a mock client profile
-    const mockUser = {
-      ...mockClients[0],
-      id: `cl-new-${Date.now()}`,
-      name: data.name,
-      email: data.email,
-      phone: data.phone,
-      vip: false,
-      totalSpent: 0,
-      reservationCount: 0,
-      createdAt: new Date(),
-    }
-    login(mockUser, 'mock-token-new-client')
-    navigate(ROUTES.CLIENT.DASHBOARD)
-  }
+    setServerError('')
+    try {
+      await http.post('/auth/register', {
+        nome: data.name,
+        email: data.email,
+        telefone: data.phone,
+        senha: data.password,
+      })
 
+      const loginRes = await http.post<unknown, {
+        access_token: string
+        refresh_token: string
+        user: {
+          id: string
+          name: string
+          email: string
+          phone: string
+          role: UserRole
+          vip: boolean
+          totalSpent: number
+          reservationCount: number
+          createdAt: string
+        }
+      }>('/auth/login', { email: data.email, senha: data.password })
+
+      const user = {
+        ...loginRes.user,
+        createdAt: new Date(loginRes.user.createdAt),
+      }
+
+      login(user, loginRes.access_token)
+      navigate(ROUTES.CLIENT.DASHBOARD)
+    } catch (err: unknown) {
+      const error = err as { response?: { status?: number; data?: { detail?: string } } }
+      const detail = error?.response?.data?.detail
+      if (error?.response?.status === 400 && detail) {
+        setServerError(detail)
+      } else {
+        setServerError('Erro ao criar conta. Tente novamente.')
+      }
+    }
+  }
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-16">
       <motion.div
@@ -49,7 +75,7 @@ export default function RegisterPage() {
       >
         {/* Header */}
         <div className="text-center">
-          <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#3D9DBD' }}>
+          <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#B89A67' }}>
             Bem-vindo
           </p>
           <h1 className="font-display text-3xl text-primary">{APP_NAME}</h1>
@@ -138,11 +164,15 @@ export default function RegisterPage() {
               ))}
             </div>
 
+            {serverError && (
+              <p className="text-sm text-danger text-center">{serverError}</p>
+            )}
+
             <button
               type="submit"
               disabled={isSubmitting}
               className="w-full flex items-center justify-center gap-2 py-2.5 rounded-md text-sm font-medium transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-50"
-              style={{ backgroundColor: '#C9A96E', color: '#0D1B2A' }}
+              style={{ backgroundColor: '#D9D0B5', color: '#181818' }}
             >
               {isSubmitting
                 ? <span className="w-4 h-4 border-2 border-charcoal border-t-transparent rounded-full animate-spin" />
@@ -163,7 +193,7 @@ export default function RegisterPage() {
   )
 }
 
-/* â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Helpers ─────────────────────────────────────────────────────────────── */
 const inputCls = (hasError: boolean) => cn(
   'w-full rounded-lg border bg-background px-3 py-2.5 text-sm text-foreground',
   'placeholder:text-muted-foreground/60 outline-none transition-colors',
@@ -180,4 +210,3 @@ function Field({ label, error, children }: { label: string; error?: string; chil
     </div>
   )
 }
-

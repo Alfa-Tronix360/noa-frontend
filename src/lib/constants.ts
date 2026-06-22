@@ -24,6 +24,13 @@ export const ROUTES = {
     PAYMENTS: '/admin/pagamentos',
     REPORTS: '/admin/relatorios',
   },
+
+  OPERACIONAL: {
+  DASHBOARD: '/operacional',
+  COZINHA: '/operacional/cozinha',
+  BAR: '/operacional/bar',
+  EQUIPA: '/operacional/equipa',
+},
 } as const
 
 export const RESERVATION_STATUS = {

@@ -12,9 +12,10 @@ import {
 } from '@/components/ui/sheet'
 
 const navLinks = [
-  { to: ROUTES.ABOUT,    label: 'Sobre' },
-  { to: ROUTES.MENU,     label: 'Cardápio' },
-  { to: ROUTES.GALLERY,  label: 'Galeria' },
+  { to: ROUTES.ABOUT, label: 'Sobre' },
+  { to: ROUTES.MENU, label: 'Cardápio' },
+  { to: '/eventos', label: 'Eventos' },
+  { to: ROUTES.GALLERY, label: 'Galeria' },
   { to: ROUTES.CONTACTS, label: 'Contactos' },
 ]
 
@@ -102,7 +103,7 @@ export function PublicLayout() {
                     src="/images/gallery-12.png"
                     alt="NOA Beach"
                     className="h-12 w-auto"
-                    
+
                   />
                 </div>
 

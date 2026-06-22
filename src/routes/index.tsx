@@ -24,6 +24,7 @@ function wrap(Component: React.LazyExoticComponent<() => JSX.Element>) {
 // ─── Páginas públicas ─────────────────────────────────────────────────────────
 const HomePage = lazy(() => import('@/pages/public/HomePage'))
 const AboutPage = lazy(() => import('@/pages/public/AboutPage'))
+const EventsPage = lazy(() => import('@/pages/public/EventsPage'))
 const MenuPage = lazy(() => import('@/pages/public/MenuPage'))
 const GalleryPage = lazy(() => import('@/pages/public/GalleryPage'))
 const ContactsPage = lazy(() => import('@/pages/public/ContactsPage'))
@@ -56,6 +57,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: wrap(HomePage) },
       { path: 'sobre', element: wrap(AboutPage) },
+      { path: 'eventos', element: wrap(EventsPage) },
       { path: 'menu', element: wrap(MenuPage) },
       { path: 'galeria', element: wrap(GalleryPage) },
       { path: 'contactos', element: wrap(ContactsPage) },
