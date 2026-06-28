@@ -108,7 +108,7 @@ function ReviewModal({ reservation, onClose }: { reservation: Reservation; onClo
           </button>
           <button onClick={() => mutation.mutate()} disabled={mutation.isPending}
             className="flex-1 py-2.5 rounded-md text-sm font-medium transition-all hover:opacity-90 disabled:opacity-50"
-            style={{ backgroundColor: '#D9D0B5', color: '#181818' }}>
+            style={{ backgroundColor: '#7BB8CE', color: '#181818' }}>
             {mutation.isPending ? 'A enviar...' : 'Enviar avaliação'}
           </button>
         </div>
@@ -168,7 +168,7 @@ function ReservationCard({
       {reservation.status === 'completed' && (
         <button onClick={() => setShowReview(true)}
           className="flex items-center gap-2 text-sm font-medium transition-colors hover:opacity-80"
-          style={{ color: '#B89A67' }}>
+          style={{ color: '#C9A96E' }}>
           ★ Avaliar visita
         </button>
       )}
@@ -372,7 +372,7 @@ function ReservationWizard() {
                     </span>
                     {/* ADICIONA ISTO */}
                     {table.price && (
-                      <span className="mt-2 block text-sm font-semibold" style={{ color: '#B89A67' }}>
+                      <span className="mt-2 block text-sm font-semibold" style={{ color: '#C9A96E' }}>
                         {formatCurrency(table.price)}
                       </span>
                     )}
@@ -506,7 +506,7 @@ function TransferRequestForm() {
           Pedido de Transfer
         </h2>
         <p className="mt-1 text-sm text-muted-foreground">
-          Solicite uma viatura para o seu evento ou visita ao Palace Lounge.
+          Solicite uma viatura para o seu evento ou visita ao NOA Beach.
         </p>
       </div>
 
@@ -704,3 +704,5 @@ export default function ClientReservationsPage() {
     </div>
   )
 }
+
+

@@ -138,7 +138,7 @@ export function ProductImageCard({
           {/* Price & description */}
           {(price || description) && (
             <div className="mt-3 space-y-1">
-              {price && <p className="text-lg font-semibold" style={{ color: '#B89A67' }}>{price}</p>}
+              {price && <p className="text-lg font-semibold" style={{ color: '#C9A96E' }}>{price}</p>}
               {description && <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>}
             </div>
           )}
@@ -147,3 +147,5 @@ export function ProductImageCard({
     </div>
   )
 }
+
+

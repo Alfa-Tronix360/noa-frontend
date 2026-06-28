@@ -1,6 +1,6 @@
 /* ─── Utilizadores ───────────────────────────────────────────────────────── */
 
-export type UserRole = 'admin' | 'client' | 'staff' | 'chefe_sala' | 'chefe_cozinha' | 'bar'
+export type UserRole = 'admin' | 'client' | 'staff' | 'chefe_sala' | 'chefe_cozinha' | 'bar' | 'rececionista'
 
 export interface User {
   id: string
@@ -73,11 +73,18 @@ export interface PublishedEvent {
   stageLabel: string
   bannerUrl?: string
   basePrice: number
+  priceIndividual: number
+  priceTable: number
+  priceTableWithConsumption: number
+  priceBox: number
+  priceBoxWithConsumption: number
+  priceVipIndividual: number
+  priceVipTable: number
+  priceVipBox: number
   published: boolean
   seats: TicketSeat[]
   createdAt: Date
 }
-
 export interface DigitalTicket {
   id: string
   eventId: string
@@ -87,6 +94,7 @@ export interface DigitalTicket {
   seatId: string
   tableNumber: number
   price: number
+  ticketType?: string
   qrCode: string
   whatsappUrl?: string
   deliveryStatus?: 'pending' | 'sent'
@@ -97,12 +105,19 @@ export interface DigitalTicket {
 
 export type EmployeeRole = 'attendant' | 'seller' | 'operator'
 
+export interface AssignedTable {
+  id: string
+  tableId: string
+  tableNumber: number
+}
+
 export interface Employee {
   id: string
   name: string
   phone: string
   role: EmployeeRole
   tableId?: string
+  assignedTables?: AssignedTable[]
   active: boolean
   createdAt: Date
 }
@@ -218,6 +233,7 @@ export interface MenuItem {
   category: MenuCategory
   price: number
   imageUrl?: string
+  images?: string[]
   available: boolean
   featured: boolean
   allergens?: string[]
@@ -329,3 +345,5 @@ export interface PaymentFilters {
   dateFrom?: Date
   dateTo?: Date
 }
+
+

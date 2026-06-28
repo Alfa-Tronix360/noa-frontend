@@ -3,8 +3,8 @@ import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recha
 import { tablesAdapter } from '@/services/adapters/tables.adapter'
 
 const COLORS: Record<string, string> = {
-  indoor: '#D9D0B5',
-  outdoor: '#B89A67',
+  indoor: '#7BB8CE',
+  outdoor: '#C9A96E',
   vip: '#A89A85',
 }
 
@@ -55,3 +55,4 @@ export function OccupancyChart() {
     </div>
   )
 }
+

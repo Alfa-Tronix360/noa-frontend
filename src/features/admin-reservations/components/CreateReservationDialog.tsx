@@ -74,7 +74,7 @@ export function CreateReservationDialog() {
       <button
         onClick={() => setOpen(true)}
         className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all hover:opacity-90"
-        style={{ backgroundColor: '#D9D0B5', color: '#181818' }}
+        style={{ backgroundColor: '#7BB8CE', color: '#181818' }}
       >
         <Plus className="w-4 h-4" /> Nova Reserva
       </button>
@@ -151,7 +151,7 @@ export function CreateReservationDialog() {
                   </button>
                   <button type="submit" disabled={isSubmitting || createMutation.isPending}
                     className="flex-1 py-2.5 rounded-md text-sm font-medium transition-all hover:opacity-90 disabled:opacity-50"
-                    style={{ backgroundColor: '#D9D0B5', color: '#181818' }}>
+                    style={{ backgroundColor: '#7BB8CE', color: '#181818' }}>
                     {createMutation.isPending ? 'A criar…' : 'Criar Reserva'}
                   </button>
                 </div>
@@ -163,3 +163,4 @@ export function CreateReservationDialog() {
     </>
   )
 }
+

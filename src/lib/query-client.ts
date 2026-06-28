@@ -56,3 +56,5 @@ export const queryKeys = {
     charts: (period: string) => ['dashboard', 'charts', period] as const,
   },
 } as const
+
+

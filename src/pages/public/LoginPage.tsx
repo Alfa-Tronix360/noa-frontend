@@ -20,6 +20,7 @@ export default function LoginPage() {
     chefe_sala: ROUTES.OPERACIONAL.DASHBOARD,
     chefe_cozinha: ROUTES.OPERACIONAL.COZINHA,
     bar: ROUTES.OPERACIONAL.BAR,
+    rececionista: ROUTES.RECECIONISTA.DASHBOARD,
     client: ROUTES.CLIENT.DASHBOARD,
   }
 
@@ -44,7 +45,7 @@ export default function LoginPage() {
       login(data.user, data.access_token)
       const role = data.user.role
 
-      // DEPOIS
+
 
       navigate(roleRedirect[role] ?? ROUTES.CLIENT.DASHBOARD)
     } catch (e: any) {
@@ -133,3 +134,4 @@ export default function LoginPage() {
     </div>
   )
 }
+

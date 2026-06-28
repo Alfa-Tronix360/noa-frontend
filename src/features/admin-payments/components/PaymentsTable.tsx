@@ -41,7 +41,7 @@ export function PaymentsTable() {
       accessorKey: 'amount',
       header: 'Valor',
       cell: ({ row }) => (
-        <span className="font-semibold" style={{ color: '#B89A67' }}>{formatCurrency(row.original.amount)}</span>
+        <span className="font-semibold" style={{ color: '#C9A96E' }}>{formatCurrency(row.original.amount)}</span>
       ),
     },
     {
@@ -95,3 +95,4 @@ export function PaymentsTable() {
     <DataTable columns={columns} data={data} searchPlaceholder="Pesquisar pagamentos…" />
   )
 }
+

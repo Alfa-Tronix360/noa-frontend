@@ -38,3 +38,5 @@ export const eventsAdapter = {
     return normalizeEvent(updated)
   },
 }
+
+

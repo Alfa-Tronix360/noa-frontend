@@ -1,11 +1,10 @@
 import { FormEvent, useMemo, useState } from 'react'
-import { ClipboardList, Plus, Trophy, UserCog } from 'lucide-react'
+import { Plus, Trophy, UserCog } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { toast } from 'sonner'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { Button } from '@/components/ui/button'
 import { formatCurrency } from '@/lib/utils'
-import { tablesAdapter } from '@/services/adapters/tables.adapter'
 import { employeesAdapter } from '@/services/adapters/employees.adapter'
 import type { EmployeeRole } from '@/types'
 
@@ -18,10 +17,6 @@ const roleLabels: Record<EmployeeRole, string> = {
 export default function AdminEmployeesPage() {
   const queryClient = useQueryClient()
 
-  const { data: tables = [] } = useQuery({
-    queryKey: ['tables'],
-    queryFn: () => tablesAdapter.getAll(),
-  })
 
   const { data: employees = [] } = useQuery({
     queryKey: ['employees'],
@@ -36,56 +31,26 @@ export default function AdminEmployeesPage() {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [role, setRole] = useState<EmployeeRole>('attendant')
-  const [tableId, setTableId] = useState('')
+  const [editingEmployee, setEditingEmployee] = useState<any | null>(null)
 
-  const [orderEmployeeId, setOrderEmployeeId] = useState('')
-  const [orderTableId, setOrderTableId] = useState('')
-  const [itemName, setItemName] = useState('')
-  const [quantity, setQuantity] = useState(1)
-  const [price, setPrice] = useState(0)
+
 
   const createEmployeeMutation = useMutation({
     mutationFn: () => employeesAdapter.create({
       name: name.trim(),
       phone: phone.trim(),
       role,
-      table_id: tableId ? Number(tableId) : undefined,
     }),
-    onSuccess: (employee) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['employees'] })
       setName('')
       setPhone('')
       setRole('attendant')
-      setTableId('')
-      setOrderEmployeeId(employee.id)
-      setOrderTableId(employee.tableId || tables[0]?.id || '')
       toast.success('Funcionario cadastrado.')
     },
     onError: () => toast.error('Erro ao cadastrar funcionario.'),
   })
 
-  const assignTableMutation = useMutation({
-    mutationFn: ({ employeeId, tableId }: { employeeId: string; tableId?: string }) =>
-      employeesAdapter.assignTable(employeeId, tableId),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['employees'] }),
-    onError: () => toast.error('Erro ao atribuir mesa.'),
-  })
-
-  const createOrderMutation = useMutation({
-    mutationFn: () => employeesAdapter.createOrder({
-      employeeId: orderEmployeeId,
-      tableId: orderTableId,
-      items: [{ name: itemName.trim(), quantity, price }],
-    }),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['employee-orders'] })
-      setItemName('')
-      setQuantity(1)
-      setPrice(0)
-      toast.success('Pedido lancado na mesa.')
-    },
-    onError: () => toast.error('Nao foi possivel lancar o pedido.'),
-  })
 
   const topEmployees = useMemo(() => {
     return employeeOrders
@@ -117,16 +82,10 @@ export default function AdminEmployeesPage() {
     createEmployeeMutation.mutate()
   }
 
-  function handleCreateOrder(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    if (!orderEmployeeId || !orderTableId || !itemName.trim() || quantity <= 0 || price <= 0) return
-    createOrderMutation.mutate()
-  }
-
   return (
     <div className="space-y-6">
       <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
-        <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#B89A67' }}>Equipa</p>
+        <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#C9A96E' }}>Equipa</p>
         <h1 className="font-display text-3xl text-primary">Funcionarios</h1>
         <p className="text-muted-foreground text-sm mt-1">Cadastre atendentes, atribua mesas e lance pedidos por mesa.</p>
       </motion.div>
@@ -153,85 +112,34 @@ export default function AdminEmployeesPage() {
                   {Object.entries(roleLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
                 </select>
               </label>
-              <label className="block space-y-2">
-                <span className="text-sm font-medium">Mesa atribuida</span>
-                <select value={tableId} onChange={(e) => setTableId(e.target.value)} className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm outline-none focus:border-primary">
-                  <option value="">Sem mesa fixa</option>
-                  {tables.map((t) => <option key={t.id} value={t.id}>Mesa {t.number}</option>)}
-                </select>
-              </label>
             </div>
+
+
             <Button type="submit" disabled={!name.trim() || !phone.trim() || createEmployeeMutation.isPending}>
               <Plus className="h-4 w-4" /> Cadastrar
             </Button>
           </form>
 
-          <form onSubmit={handleCreateOrder} className="rounded-xl border border-border/40 bg-surface p-5 space-y-4">
-            <div className="flex items-center gap-2">
-              <ClipboardList className="h-5 w-5 text-primary" />
-              <h2 className="font-semibold">Lancar pedido da mesa</h2>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2">
-              <label className="block space-y-2">
-                <span className="text-sm font-medium">Funcionario</span>
-                <select value={orderEmployeeId} onChange={(e) => {
-                  const emp = employees.find((item) => item.id === e.target.value)
-                  setOrderEmployeeId(e.target.value)
-                  setOrderTableId(emp?.tableId || tables[0]?.id || '')
-                }} className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm outline-none focus:border-primary">
-                  <option value="">Selecione</option>
-                  {employees.map((e) => <option key={e.id} value={e.id}>{e.name}</option>)}
-                </select>
-              </label>
-              <label className="block space-y-2">
-                <span className="text-sm font-medium">Mesa</span>
-                <select value={orderTableId} onChange={(e) => setOrderTableId(e.target.value)} className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm outline-none focus:border-primary">
-                  {tables.map((t) => <option key={t.id} value={t.id}>Mesa {t.number}</option>)}
-                </select>
-              </label>
-              <label className="block space-y-2">
-                <span className="text-sm font-medium">Produto/servico</span>
-                <input value={itemName} onChange={(e) => setItemName(e.target.value)} className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm outline-none focus:border-primary" />
-              </label>
-              <div className="grid grid-cols-2 gap-3">
-                <label className="block space-y-2">
-                  <span className="text-sm font-medium">Qtd.</span>
-                  <input type="number" min={1} value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm outline-none focus:border-primary" />
-                </label>
-                <label className="block space-y-2">
-                  <span className="text-sm font-medium">Preco</span>
-                  <input type="number" min={0} value={price} onChange={(e) => setPrice(Number(e.target.value))} className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm outline-none focus:border-primary" />
-                </label>
-              </div>
-            </div>
-            <Button type="submit" disabled={!orderEmployeeId || !orderTableId || !itemName.trim() || price <= 0 || createOrderMutation.isPending}>
-              <Plus className="h-4 w-4" /> Lancar pedido
-            </Button>
-          </form>
-
           <div className="rounded-xl border border-border/40 bg-surface">
             <div className="border-b border-border/40 p-5">
-              <h2 className="font-semibold">Funcionarios cadastrados</h2>
+              <h2 className="font-semibold">Lista dos Funcionarios cadastrados</h2>
             </div>
             <div className="divide-y divide-border/40">
-              {employees.length ? employees.map((employee) => {
-                const table = tables.find((t) => t.id === employee.tableId)
-                return (
-                  <div key={employee.id} className="grid gap-3 p-4 md:grid-cols-[1fr_180px] md:items-center">
-                    <div>
-                      <p className="font-medium">{employee.name}</p>
-                      <p className="text-sm text-muted-foreground">{roleLabels[employee.role]} | {employee.phone}</p>
-                    </div>
-                    <select
-                      value={employee.tableId || ''}
-                      onChange={(e) => assignTableMutation.mutate({ employeeId: employee.id, tableId: e.target.value || undefined })}
-                      className="h-9 rounded-md border border-input bg-background px-3 text-sm outline-none focus:border-primary">
-                      <option value="">{table ? `Mesa ${table.number}` : 'Sem mesa fixa'}</option>
-                      {tables.map((t) => <option key={t.id} value={t.id}>Mesa {t.number}</option>)}
-                    </select>
+              {employees.length ? employees.map((employee) => (
+                <div key={employee.id} className="p-4 flex items-center justify-between cursor-pointer hover:bg-secondary/30 transition-colors"
+                  onClick={() => setEditingEmployee(employee)}>
+                  <div>
+                    <p className="font-medium">{employee.name}</p>
+                    <p className="text-sm text-muted-foreground">{roleLabels[employee.role]} | {employee.phone}</p>
+                    {employee.assignedTables && employee.assignedTables.length > 0 && (
+                      <p className="text-xs text-accent mt-0.5">
+                        {employee.assignedTables.length} mesa(s): {employee.assignedTables.map((at) => `Mesa ${at.tableNumber}`).join(', ')}
+                      </p>
+                    )}
                   </div>
-                )
-              }) : (
+                  <span className="text-xs text-muted-foreground">Editar →</span>
+                </div>
+              )) : (
                 <div className="p-5 text-sm text-muted-foreground">Ainda nao existem funcionarios cadastrados.</div>
               )}
             </div>
@@ -243,7 +151,61 @@ export default function AdminEmployeesPage() {
           <RankingCard title="Mesas que mais rendem" subtitle="Pedidos lancados por mesa" items={topTables} />
         </aside>
       </div>
+      {editingEmployee && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="w-full max-w-lg rounded-2xl border border-border bg-background shadow-xl p-6 space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="font-display text-xl text-primary">Editar Funcionario</h2>
+              <button onClick={() => setEditingEmployee(null)} className="text-muted-foreground hover:text-foreground text-xl">×</button>
+            </div>
+            <label className="block space-y-2">
+              <span className="text-sm font-medium">Nome</span>
+              <input value={editingEmployee.name} onChange={e => setEditingEmployee({ ...editingEmployee, name: e.target.value })}
+                className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm outline-none focus:border-primary" />
+            </label>
+            <label className="block space-y-2">
+              <span className="text-sm font-medium">Telefone</span>
+              <input value={editingEmployee.phone} onChange={e => setEditingEmployee({ ...editingEmployee, phone: e.target.value })}
+                className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm outline-none focus:border-primary" />
+            </label>
+            <label className="block space-y-2">
+              <span className="text-sm font-medium">Funcao</span>
+              <select value={editingEmployee.role} onChange={e => setEditingEmployee({ ...editingEmployee, role: e.target.value })}
+                className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm outline-none focus:border-primary">
+                {Object.entries(roleLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+              </select>
+            </label>
+
+            <div className="flex gap-2 pt-2 border-t border-border">
+              <button onClick={() => setEditingEmployee(null)}
+                className="flex-1 py-2.5 rounded-md text-sm border border-border hover:bg-secondary transition-colors">
+                Fechar
+              </button>
+              <button onClick={async () => {
+                if (!confirm(`Apagar "${editingEmployee.name}"?`)) return
+                await employeesAdapter.delete(editingEmployee.id)
+                queryClient.invalidateQueries({ queryKey: ['employees'] })
+                setEditingEmployee(null)
+                toast.success('Funcionario eliminado.')
+              }}
+                className="px-4 py-2.5 rounded-md text-sm border border-danger/30 hover:bg-danger/10 text-danger transition-colors">
+                Apagar
+              </button>
+              <Button className="flex-1" onClick={async () => {
+                await employeesAdapter.assignTable(editingEmployee.id, editingEmployee.tableId)
+                queryClient.invalidateQueries({ queryKey: ['employees'] })
+                setEditingEmployee(null)
+                toast.success('Funcionario atualizado.')
+              }}>
+                Guardar
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
+
+
   )
 }
 
@@ -271,7 +233,9 @@ function RankingCard({ title, subtitle, items }: { title: string; subtitle: stri
             O ranking aparece depois dos primeiros pedidos lancados.
           </div>
         )}
+
       </div>
     </section>
   )
 }
+

@@ -47,3 +47,5 @@ export const useReservationWizardStore = create<WizardState>((set, get) => ({
   },
   reset: () => set(initial),
 }))
+
+

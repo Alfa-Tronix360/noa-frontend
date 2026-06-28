@@ -38,7 +38,7 @@ export function ClientsTable() {
         return (
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold flex-shrink-0"
-              style={{ background: 'linear-gradient(135deg,#D9D0B5,#B89A67)', color: '#181818' }}>
+              style={{ background: 'linear-gradient(135deg,#7BB8CE,#C9A96E)', color: '#181818' }}>
               {getInitials(c.name)}
             </div>
             <div>
@@ -62,7 +62,7 @@ export function ClientsTable() {
     {
       accessorKey: 'totalSpent',
       header: 'Total Gasto',
-      cell: ({ row }) => <span className="font-medium" style={{ color: '#B89A67' }}>{formatCurrency(row.original.totalSpent)}</span>,
+      cell: ({ row }) => <span className="font-medium" style={{ color: '#C9A96E' }}>{formatCurrency(row.original.totalSpent)}</span>,
     },
     {
       accessorKey: 'createdAt',
@@ -74,7 +74,7 @@ export function ClientsTable() {
       header: 'VIP',
       cell: ({ row }) => row.original.vip ? (
         <span className="inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full font-medium"
-          style={{ backgroundColor: 'rgba(184,154,103,0.2)', color: '#B89A67' }}>
+          style={{ backgroundColor: 'rgba(184,154,103,0.2)', color: '#C9A96E' }}>
           <Star className="w-2.5 h-2.5 fill-current" /> VIP
         </span>
       ) : null,
@@ -125,14 +125,14 @@ export function ClientsTable() {
 
               <div className="flex flex-col items-center gap-3 mb-6 pb-6 border-b border-border">
                 <div className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold"
-                  style={{ background: 'linear-gradient(135deg,#D9D0B5,#B89A67)', color: '#181818' }}>
+                  style={{ background: 'linear-gradient(135deg,#7BB8CE,#C9A96E)', color: '#181818' }}>
                   {getInitials(selected.name)}
                 </div>
                 <div className="text-center">
                   <p className="font-semibold text-foreground">{selected.name}</p>
                   {selected.vip && (
                     <span className="inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full mt-1"
-                      style={{ backgroundColor: 'rgba(184,154,103,0.2)', color: '#B89A67' }}>
+                      style={{ backgroundColor: 'rgba(184,154,103,0.2)', color: '#C9A96E' }}>
                       <Star className="w-3 h-3 fill-current" /> Cliente VIP
                     </span>
                   )}
@@ -163,7 +163,7 @@ export function ClientsTable() {
                   </p>
                   <div className="mt-2 h-1.5 rounded-full bg-border overflow-hidden">
                     <div className="h-full rounded-full transition-all"
-                      style={{ width: `${Math.min(100, (selected.totalSpent / 200000) * 100)}%`, backgroundColor: '#B89A67' }} />
+                      style={{ width: `${Math.min(100, (selected.totalSpent / 200000) * 100)}%`, backgroundColor: '#C9A96E' }} />
                   </div>
                 </div>
               )}
@@ -174,3 +174,4 @@ export function ClientsTable() {
     </>
   )
 }
+

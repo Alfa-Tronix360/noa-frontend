@@ -32,3 +32,4 @@ export const transfersAdapter = {
     return http.get<unknown, TransferRequest[]>(`/transfers/me/${clientId}`)
   },
 }
+

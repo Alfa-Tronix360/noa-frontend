@@ -1,33 +1,34 @@
-﻿import { useState, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, X } from 'lucide-react'
 import Fuse from 'fuse.js'
-import { mockMenu } from '@/data'
+import { useQuery } from '@tanstack/react-query'
+import { http } from '@/services/api/http'
 import { MENU_CATEGORY_LABELS } from '@/lib/constants'
 import { formatCurrency, cn } from '@/lib/utils'
 import { ProductImageCard } from '@/components/ui/product-image-card'
 import { ShuffleHero } from '@/components/ui/shuffle-grid'
 import type { MenuCategory } from '@/types'
 
-/* â”€â”€ Image map â€” cada item usa uma das imagens da galeria â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Image map — cada item usa uma das imagens da galeria ───────────────── */
 const itemImages: Record<string, string[]> = {
-  'mi-1':  ['/images/gallery-05.png', '/images/gallery-06.png'],
-  'mi-2':  ['/images/gallery-06.png', '/images/gallery-07.png'],
-  'mi-3':  ['/images/gallery-07.png', '/images/gallery-08.png'],
-  'mi-4':  ['/images/gallery-08.png', '/images/gallery-05.png'],
-  'mi-5':  ['/images/gallery-09.png', '/images/gallery-10.png'],
-  'mi-6':  ['/images/gallery-10.png', '/images/gallery-11.png'],
-  'mi-7':  ['/images/gallery-11.png', '/images/gallery-09.png'],
-  'mi-8':  ['/images/gallery-12.png', '/images/gallery-13.jpeg'],
-  'mi-9':  ['/images/gallery-13.jpeg', '/images/gallery-01.png'],
-  'mi-10': ['/images/gallery-01.png', '/images/gallery-02.png'],
-  'mi-11': ['/images/gallery-02.png', '/images/gallery-13.jpeg'],
+  'mi-1': ['/images/gallery-05.png', '/images/gallery-06.png'],
+  'mi-2': ['/images/gallery-06.png', '/images/gallery-07.png'],
+  'mi-3': ['/images/gallery-07.png', '/images/gallery-08.png'],
+  'mi-4': ['/images/gallery-08.png', '/images/gallery-05.png'],
+  'mi-5': ['/images/gallery-09.png', '/images/gallery-10.png'],
+  'mi-6': ['/images/gallery-10.png', '/images/gallery-11.png'],
+  'mi-7': ['/images/gallery-11.png', '/images/gallery-09.png'],
+  'mi-8': ['/images/gallery-12.png', '/images/gallery-13.png'],
+  'mi-9': ['/images/gallery-13.png', '/images/gallery-14.png'],
+  'mi-10': ['/images/gallery-14.png', '/images/gallery-15.png'],
+  'mi-11': ['/images/gallery-15.png', '/images/gallery-13.png'],
   'mi-12': ['/images/gallery-01.png'],
   'mi-13': ['/images/gallery-02.png'],
   'mi-14': ['/images/gallery-03.png'],
-  'mi-15': ['/images/gallery-04.png', '/images/gallery-05.png'],
-  'mi-16': ['/images/gallery-05.png', '/images/gallery-04.png'],
-  'mi-17': ['/images/gallery-06.png'],
+  'mi-15': ['/images/gallery-16.png', '/images/gallery-17.png'],
+  'mi-16': ['/images/gallery-17.png', '/images/gallery-16.png'],
+  'mi-17': ['/images/gallery-15.png'],
   'mi-18': ['/images/gallery-04.png'],
   'mi-19': ['/images/gallery-03.png', '/images/gallery-04.png'],
   'mi-20': ['/images/gallery-02.png', '/images/gallery-03.png'],
@@ -35,27 +36,31 @@ const itemImages: Record<string, string[]> = {
 
 const categories = Object.keys(MENU_CATEGORY_LABELS) as MenuCategory[]
 
-const fuse = new Fuse(mockMenu, {
-  keys: ['name', 'description', 'category'],
-  threshold: 0.35,
-})
-
 export default function MenuPage() {
+  const { data: menuItems = [] } = useQuery({
+    queryKey: ['public-menu'],
+    queryFn: () => http.get<unknown, any[]>('/menu'),
+  })
+
+  const fuse = new Fuse(menuItems, {
+    keys: ['name', 'description', 'category'],
+    threshold: 0.35,
+  })
   const [activeCategory, setActiveCategory] = useState<MenuCategory | 'all'>('all')
   const [search, setSearch] = useState('')
   const [selectedId, setSelectedId] = useState<string | null>(null)
 
   const filtered = useMemo(() => {
-    let items = mockMenu
+    let items = menuItems
     if (search.trim()) {
       items = fuse.search(search.trim()).map(r => r.item)
     } else if (activeCategory !== 'all') {
-      items = mockMenu.filter(i => i.category === activeCategory)
+      items = menuItems.filter(i => i.category === activeCategory)
     }
     return items
   }, [search, activeCategory])
 
-  const selected = selectedId ? mockMenu.find(i => i.id === selectedId) : null
+  const selected = selectedId ? menuItems.find(i => i.id === selectedId) : null
 
   return (
     <div className="min-h-screen bg-background">
@@ -63,7 +68,7 @@ export default function MenuPage() {
       {/* Header */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-          <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#3D9DBD' }}>
+          <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#C9A96E' }}>
             NOA Beach
           </p>
           <h1 className="font-display text-4xl md:text-5xl text-foreground">Cardápio</h1>
@@ -127,7 +132,11 @@ export default function MenuPage() {
                 title={selected.name}
                 price={formatCurrency(selected.price)}
                 description={selected.description}
-                images={(itemImages[selected.id] ?? ['/images/gallery-01.png']).map(src => ({ src, alt: selected.name }))}
+                images={[
+                  ...(selected.imageUrl ? [{ src: selected.imageUrl, alt: selected.name }] : []),
+                  ...(selected.images ?? []).map((src: string) => ({ src, alt: selected.name })),
+                  ...((selected.imageUrl || (selected.images?.length ?? 0) > 0) ? [] : (itemImages[selected.id] ?? ['/images/gallery-01.png']).map((src: string) => ({ src, alt: selected.name }))),
+                ]}
               />
               <button
                 onClick={() => setSelectedId(null)}
@@ -161,7 +170,7 @@ export default function MenuPage() {
                 {/* Image */}
                 <div className="relative h-44 overflow-hidden bg-muted">
                   <img
-                    src={(itemImages[item.id] ?? ['/images/gallery-01.png'])[0]}
+                    src={item.imageUrl ?? (itemImages[item.id] ?? ['/images/gallery-01.png'])[0]}
                     alt={item.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
@@ -169,7 +178,7 @@ export default function MenuPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   {item.featured && (
                     <span className="absolute top-2 left-2 text-[10px] font-semibold px-2 py-0.5 rounded-full"
-                      style={{ backgroundColor: '#3D9DBD', color: '#0D1B2A' }}>
+                      style={{ backgroundColor: '#C9A96E', color: '#181818' }}>
                       Destaque
                     </span>
                   )}
@@ -188,7 +197,7 @@ export default function MenuPage() {
                   <p className="text-sm font-medium text-foreground leading-tight line-clamp-2 group-hover:text-primary transition-colors">
                     {item.name}
                   </p>
-                  <p className="text-sm font-semibold mt-1.5" style={{ color: '#3D9DBD' }}>
+                  <p className="text-sm font-semibold mt-1.5" style={{ color: '#C9A96E' }}>
                     {formatCurrency(item.price)}
                   </p>
                 </div>
@@ -213,7 +222,7 @@ export default function MenuPage() {
   )
 }
 
-/* â”€â”€ Tab button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Tab button ──────────────────────────────────────────────────────────── */
 function TabButton({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
     <button
@@ -224,10 +233,11 @@ function TabButton({ active, onClick, children }: { active: boolean; onClick: ()
           ? 'text-primary-foreground border-transparent'
           : 'border-border text-muted-foreground hover:border-primary/40 hover:text-foreground'
       )}
-      style={active ? { backgroundColor: '#C9A96E', color: '#0D1B2A' } : {}}
+      style={active ? { backgroundColor: '#7BB8CE', color: '#181818' } : {}}
     >
       {children}
     </button>
   )
 }
+
 

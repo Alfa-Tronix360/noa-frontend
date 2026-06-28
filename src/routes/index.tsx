@@ -1,9 +1,9 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
-import { lazy, Suspense, type JSX } from 'react'
+import { lazy, Suspense } from 'react'
 import { PublicLayout } from './PublicLayout'
 import { ClientLayout } from './ClientLayout'
 import { AdminLayout } from './AdminLayout'
-
+import { OperacionalLayout } from './OperacionalLayout'
 // ─── Loader ──────────────────────────────────────────────────────────────────
 function PageLoader() {
   return (
@@ -13,7 +13,7 @@ function PageLoader() {
   )
 }
 
-function wrap(Component: React.LazyExoticComponent<() => JSX.Element>) {
+function wrap(Component: React.LazyExoticComponent<React.ComponentType<any>>) {
   return (
     <Suspense fallback={<PageLoader />}>
       <Component />
@@ -24,19 +24,20 @@ function wrap(Component: React.LazyExoticComponent<() => JSX.Element>) {
 // ─── Páginas públicas ─────────────────────────────────────────────────────────
 const HomePage = lazy(() => import('@/pages/public/HomePage'))
 const AboutPage = lazy(() => import('@/pages/public/AboutPage'))
-const EventsPage = lazy(() => import('@/pages/public/EventsPage'))
 const MenuPage = lazy(() => import('@/pages/public/MenuPage'))
 const GalleryPage = lazy(() => import('@/pages/public/GalleryPage'))
 const ContactsPage = lazy(() => import('@/pages/public/ContactsPage'))
 const LoginPage = lazy(() => import('@/pages/public/LoginPage'))
 const RegisterPage = lazy(() => import('@/pages/public/RegisterPage'))
 const ScannerPage = lazy(() => import('@/pages/staff/ScannerPage'))
-
+const EventsPage = lazy(() => import('@/pages/public/EventsPage'))
+const EventDetailPage = lazy(() => import('@/pages/client/EventDetailPage'))
 // ─── Páginas do cliente ───────────────────────────────────────────────────────
 const ClientDashboardPage = lazy(() => import('@/pages/client/ClientDashboardPage'))
 const ClientReservationsPage = lazy(() => import('@/pages/client/ClientReservationsPage'))
 const ClientEventsPage = lazy(() => import('@/pages/client/ClientEventsPage'))
 const ClientProfilePage = lazy(() => import('@/pages/client/ClientProfilePage'))
+const AdminImagesPage = lazy(() => import('@/pages/admin/AdminImagesPage'))
 
 // ─── Páginas de admin ─────────────────────────────────────────────────────────
 const AdminDashboardPage = lazy(() => import('@/pages/admin/AdminDashboardPage'))
@@ -49,6 +50,14 @@ const AdminMenuPage = lazy(() => import('@/pages/admin/AdminMenuPage'))
 const AdminPaymentsPage = lazy(() => import('@/pages/admin/AdminPaymentsPage'))
 const AdminReportsPage = lazy(() => import('@/pages/admin/AdminReportsPage'))
 
+const RecepcionistaPage = lazy(() => import('@/pages/rececionista/RecepcionistaPage'))
+
+// Operational
+
+const OperacionalDashboardPage = lazy(() => import('@/pages/operacional/OperacionalDashboardPage'))
+const OperacionalCozinhaPage = lazy(() => import('@/pages/operacional/OperacionalCozinhaPage'))
+const OperacionalBarPage = lazy(() => import('@/pages/operacional/OperacionalBarPage'))
+const OperacionalEquipaPage = lazy(() => import('@/pages/operacional/OperacionalEquipaPage'))
 // ─── Router ───────────────────────────────────────────────────────────────────
 export const router = createBrowserRouter([
   {
@@ -57,12 +66,17 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: wrap(HomePage) },
       { path: 'sobre', element: wrap(AboutPage) },
-      { path: 'eventos', element: wrap(EventsPage) },
       { path: 'menu', element: wrap(MenuPage) },
       { path: 'galeria', element: wrap(GalleryPage) },
       { path: 'contactos', element: wrap(ContactsPage) },
       { path: 'login', element: wrap(LoginPage) },
       { path: 'registo', element: wrap(RegisterPage) },
+      { path: 'eventos', element: wrap(EventsPage) },
+      {
+        path: '/rececionista',
+        element: wrap(RecepcionistaPage),
+      },
+      { path: 'eventos/:id', element: wrap(EventDetailPage) },
     ],
   },
   {
@@ -90,8 +104,20 @@ export const router = createBrowserRouter([
       { path: 'clientes', element: wrap(AdminClientsPage) },
       { path: 'eventos', element: wrap(AdminEventsPage) },
       { path: 'cardapio', element: wrap(AdminMenuPage) },
+      { path: 'imagens', element: wrap(AdminImagesPage) },
       { path: 'pagamentos', element: wrap(AdminPaymentsPage) },
       { path: 'relatorios', element: wrap(AdminReportsPage) },
+    ],
+  },
+
+  {
+    path: '/operacional',
+    element: <OperacionalLayout />,
+    children: [
+      { index: true, element: wrap(OperacionalDashboardPage) },
+      { path: 'cozinha', element: wrap(OperacionalCozinhaPage) },
+      { path: 'bar', element: wrap(OperacionalBarPage) },
+      { path: 'equipa', element: wrap(OperacionalEquipaPage) },
     ],
   },
   {
@@ -99,3 +125,5 @@ export const router = createBrowserRouter([
     element: <Navigate to="/" replace />,
   },
 ])
+
+

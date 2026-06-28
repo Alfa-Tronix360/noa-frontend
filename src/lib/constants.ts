@@ -7,6 +7,7 @@ export const ROUTES = {
   LOGIN: '/login',
   REGISTER: '/registo',
   SCANNER: '/scanner',
+  EVENTS_PUBLIC: '/eventos',  // ← adiciona aqui
   CLIENT: {
     DASHBOARD: '/cliente',
     RESERVATIONS: '/cliente/reservas',
@@ -21,15 +22,20 @@ export const ROUTES = {
     CLIENTS: '/admin/clientes',
     EVENTS: '/admin/eventos',
     MENU: '/admin/cardapio',
+    IMAGES: '/admin/imagens',
     PAYMENTS: '/admin/pagamentos',
     REPORTS: '/admin/relatorios',
   },
-
   OPERACIONAL: {
-  DASHBOARD: '/operacional',
-  COZINHA: '/operacional/cozinha',
-  BAR: '/operacional/bar',
-  EQUIPA: '/operacional/equipa',
+    DASHBOARD: '/operacional',
+    COZINHA: '/operacional/cozinha',
+    BAR: '/operacional/bar',
+    EQUIPA: '/operacional/equipa',
+  },
+
+  RECECIONISTA: {
+  DASHBOARD: '/rececionista',
+  RESERVAS: '/rececionista/reservas',
 },
 } as const
 
@@ -125,6 +131,8 @@ export const TIME_SLOTS = [
 export const VIP_THRESHOLD_AOA = 200_000
 
 export const APP_NAME = 'NOA Beach'
-export const APP_DESCRIPTION = 'Beach Club Premium em Luanda, Angola'
+export const APP_DESCRIPTION = 'Restaurante Premium em Luanda, Angola'
 export const APP_PHONE = '+244 941 805 698'
-export const APP_ADDRESS = 'Luanda, Angola'
+export const APP_ADDRESS = 'R. Maj. Kanhangulo Andar, Luanda, Angola'
+
+

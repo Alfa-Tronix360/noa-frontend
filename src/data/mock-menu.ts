@@ -134,7 +134,7 @@ export const mockMenu: MenuItem[] = [
   {
     id: 'mi-14',
     name: 'Café Expresso',
-    description: 'Blend exclusivo Palace Lounge, torrado artesanalmente.',
+    description: 'Blend exclusivo NOA Beach, torrado artesanalmente.',
     category: 'drinks',
     price: 600,
     available: true,
@@ -202,3 +202,5 @@ export const mockMenu: MenuItem[] = [
     createdAt: new Date('2024-01-01'),
   },
 ]
+
+

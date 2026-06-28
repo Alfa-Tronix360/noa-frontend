@@ -4,35 +4,37 @@ import { Link } from 'react-router-dom'
 import { PrismaHero } from '@/components/ui/prisma-hero'
 import { ShuffleHero } from '@/components/ui/shuffle-grid'
 import { ROUTES } from '@/lib/constants'
+import { useSiteImages } from '@/hooks/useSiteImages'
+import type { SiteImageKey } from '@/lib/site-images.constants'
 
 /* ── Destaques ───────────────────────────────────────────────────────────── */
-const highlights = [
+const highlights: { icon: typeof Star; title: string; description: string; imageKey: SiteImageKey }[] = [
   {
     icon: Star,
     title: 'Gastronomia Premium',
     description: 'Pratos elaborados com ingredientes selecionados, numa fusão de sabores que homenageia a culinária internacional e angolana.',
-    image: '/images/gallery-05.png',
+    imageKey: 'gallery-05',
   },
   {
     icon: Users,
     title: 'Serviço Personalizado',
     description: 'Cada detalhe é pensado para que a sua experiência seja única. O nosso programa VIP garante atenção exclusiva.',
-    image: '/images/gallery-06.png',
+    imageKey: 'gallery-06',
   },
   {
     icon: Clock,
     title: 'Ambiente Sofisticado',
-    description: 'Um espaço desenhado para criar memórias. Do pequeno-almoço elegante ao jantar íntimo, o NOA Beach é o cenário perfeito.',
-    image: '/images/gallery-07.png',
+    description: 'Um espaço desenhado para criar memórias. Do pequeno-almoço elegante ao jantar íntimo, o Palace é o cenário perfeito.',
+    imageKey: 'gallery-07',
   },
 ]
 
 /* ── MenuPreview items ───────────────────────────────────────────────────── */
-const menuPreviews = [
-  { name: 'Lombo de Vaca Angus', category: 'Prato Principal', price: '9.500 AOA', image: '/images/gallery-08.png' },
-  { name: 'Carpaccio de Polvo', category: 'Entrada', price: '3.800 AOA', image: '/images/gallery-09.png' },
-  { name: 'Espresso Martini', category: 'Cocktail', price: '3.000 AOA', image: '/images/gallery-10.png' },
-  { name: 'Mousse de Chocolate Belga', category: 'Sobremesa', price: '2.500 AOA', image: '/images/gallery-11.png' },
+const menuPreviews: { name: string; category: string; price: string; imageKey: SiteImageKey }[] = [
+  { name: 'Lombo de Vaca Angus', category: 'Prato Principal', price: '9.500 AOA', imageKey: 'gallery-08' },
+  { name: 'Carpaccio de Polvo', category: 'Entrada', price: '3.800 AOA', imageKey: 'gallery-09' },
+  { name: 'Espresso Martini', category: 'Cocktail', price: '3.000 AOA', imageKey: 'gallery-10' },
+  { name: 'Mousse de Chocolate Belga', category: 'Sobremesa', price: '2.500 AOA', imageKey: 'gallery-11' },
 ]
 
 /* ── Animação de secção ──────────────────────────────────────────────────── */
@@ -42,12 +44,14 @@ const fadeUp = {
 }
 
 export default function HomePage() {
+  const { resolve } = useSiteImages()
+
   return (
     <div className="min-h-screen bg-background">
 
       {/* ── Hero ──────────────────────────────────────────────────────── */}
       <PrismaHero
-        backgroundImage="/images/gallery-01.png"
+        backgroundImage={resolve('gallery-01')}
         title="NOA Beach"
         subtitle="Uma experiência gastronómica única no coração de Luanda. Ambiente sofisticado, gastronomia premium e serviço personalizado."
         ctaLabel="Reservar Mesa"
@@ -63,7 +67,7 @@ export default function HomePage() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#3D9DBD' }}>
+          <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#C9A96E' }}>
             O que nos distingue
           </p>
           <h2 className="font-display text-4xl md:text-5xl text-foreground">
@@ -84,13 +88,13 @@ export default function HomePage() {
             >
               <div className="relative h-52 overflow-hidden">
                 <img
-                  src={h.image}
+                  src={resolve(h.imageKey)}
                   alt={h.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-4 left-4">
-                  <h.icon className="w-5 h-5 mb-1" style={{ color: '#C9A96E' }} />
+                  <h.icon className="w-5 h-5 mb-1" style={{ color: '#7BB8CE' }} />
                   <h3 className="font-display text-lg text-white">{h.title}</h3>
                 </div>
               </div>
@@ -113,7 +117,7 @@ export default function HomePage() {
             className="flex items-end justify-between mb-10"
           >
             <div>
-              <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#3D9DBD' }}>
+              <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#C9A96E' }}>
                 Destaques do cardápio
               </p>
               <h2 className="font-display text-3xl md:text-4xl text-foreground">Sabores que surpreendem</h2>
@@ -121,7 +125,7 @@ export default function HomePage() {
             <Link
               to={ROUTES.MENU}
               className="hidden md:flex items-center gap-2 text-sm font-medium transition-colors hover:opacity-80"
-              style={{ color: '#C9A96E' }}
+              style={{ color: '#7BB8CE' }}
             >
               Ver cardápio completo <ArrowRight className="w-4 h-4" />
             </Link>
@@ -140,7 +144,7 @@ export default function HomePage() {
               >
                 <div className="relative h-40 sm:h-48 overflow-hidden">
                   <img
-                    src={item.image}
+                    src={resolve(item.imageKey)}
                     alt={item.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -149,14 +153,14 @@ export default function HomePage() {
                 <div className="p-3">
                   <p className="text-xs text-muted-foreground mb-0.5">{item.category}</p>
                   <p className="text-sm font-medium text-foreground leading-tight">{item.name}</p>
-                  <p className="text-sm mt-1 font-semibold" style={{ color: '#3D9DBD' }}>{item.price}</p>
+                  <p className="text-sm mt-1 font-semibold" style={{ color: '#C9A96E' }}>{item.price}</p>
                 </div>
               </motion.div>
             ))}
           </div>
 
           <div className="mt-6 text-center md:hidden">
-            <Link to={ROUTES.MENU} className="text-sm font-medium" style={{ color: '#C9A96E' }}>
+            <Link to={ROUTES.MENU} className="text-sm font-medium" style={{ color: '#7BB8CE' }}>
               Ver cardápio completo →
             </Link>
           </div>
@@ -176,7 +180,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden py-24">
         <div className="absolute inset-0">
           <img
-            src="/images/gallery-12.png"
+            src={resolve('gallery-12')}
             alt="Eventos NOA Beach"
             className="w-full h-full object-cover"
           />
@@ -190,7 +194,7 @@ export default function HomePage() {
           className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         >
           <div className="max-w-xl">
-            <p className="text-xs tracking-[0.3em] uppercase mb-4" style={{ color: '#3D9DBD' }}>
+            <p className="text-xs tracking-[0.3em] uppercase mb-4" style={{ color: '#C9A96E' }}>
               Eventos Privados
             </p>
             <h2 className="font-display text-4xl md:text-5xl text-white mb-6 leading-tight">
@@ -203,7 +207,7 @@ export default function HomePage() {
             <Link
               to={ROUTES.CONTACTS}
               className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all hover:gap-3"
-              style={{ backgroundColor: '#C9A96E', color: '#0D1B2A' }}
+              style={{ backgroundColor: '#7BB8CE', color: '#181818' }}
             >
               Solicitar Evento <ArrowRight className="w-4 h-4" />
             </Link>
@@ -220,7 +224,7 @@ export default function HomePage() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#3D9DBD' }}>
+          <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#C9A96E' }}>
             O que dizem os nossos clientes
           </p>
           <h2 className="font-display text-3xl md:text-4xl text-foreground">Experiências que inspiram</h2>
@@ -243,7 +247,7 @@ export default function HomePage() {
             >
               <div className="flex gap-1">
                 {Array.from({ length: r.rating }).map((_, j) => (
-                  <Star key={j} className="w-4 h-4 fill-current" style={{ color: '#3D9DBD' }} />
+                  <Star key={j} className="w-4 h-4 fill-current" style={{ color: '#C9A96E' }} />
                 ))}
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed italic">"{r.comment}"</p>
@@ -256,3 +260,4 @@ export default function HomePage() {
     </div>
   )
 }
+

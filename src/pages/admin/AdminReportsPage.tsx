@@ -66,9 +66,9 @@ export default function AdminReportsPage() {
       <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
         className="flex items-start justify-between gap-4 flex-wrap">
         <div>
-          <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#B89A67' }}>Análise</p>
+          <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#C9A96E' }}>Análise</p>
           <h1 className="font-display text-3xl text-primary">Relatórios</h1>
-          <p className="text-muted-foreground text-sm mt-1">Dados operacionais e financeiros do Palace Lounge</p>
+          <p className="text-muted-foreground text-sm mt-1">Dados operacionais e financeiros do NOA Beach</p>
         </div>
         <div className="flex gap-2">
           <button onClick={exportAll}
@@ -78,7 +78,7 @@ export default function AdminReportsPage() {
           </button>
           <button onClick={() => window.print()}
             className="flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all hover:opacity-90"
-            style={{ backgroundColor: '#D9D0B5', color: '#181818' }}>
+            style={{ backgroundColor: '#7BB8CE', color: '#181818' }}>
             <Printer className="w-4 h-4" />
             Imprimir / PDF
           </button>
@@ -97,7 +97,7 @@ export default function AdminReportsPage() {
           </div>
           <div className="rounded-xl border border-border/40 bg-surface p-4 text-center">
             <p className="text-xs text-muted-foreground mb-1">Total</p>
-            <p className="text-xl font-bold" style={{ color: '#B89A67' }}>{(revenue.total / 1000).toFixed(0)}K Kz</p>
+            <p className="text-xl font-bold" style={{ color: '#C9A96E' }}>{(revenue.total / 1000).toFixed(0)}K Kz</p>
           </div>
         </div>
       )}
@@ -128,3 +128,4 @@ export default function AdminReportsPage() {
     </div>
   )
 }
+

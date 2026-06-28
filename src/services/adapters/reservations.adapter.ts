@@ -45,3 +45,5 @@ export const reservationsAdapter = {
     return normalizeReservation(updated)
   },
 }
+
+

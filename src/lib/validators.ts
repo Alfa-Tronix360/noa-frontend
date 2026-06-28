@@ -69,3 +69,5 @@ export type EventRequestInput = z.infer<typeof eventRequestSchema>
 export type ContactInput = z.infer<typeof contactSchema>
 export type MenuItemInput = z.infer<typeof menuItemSchema>
 export type ReviewInput = z.infer<typeof reviewSchema>
+
+

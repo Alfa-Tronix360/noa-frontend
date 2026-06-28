@@ -8,6 +8,11 @@ function normalizeEmployee(item: any): Employee {
     phone: item.phone,
     role: item.role,
     tableId: item.table_id ? String(item.table_id) : undefined,
+   assignedTables: (item.assignedTables || item.assigned_tables || []).map((at: any) => ({
+  id: String(at.id),
+  tableId: String(at.tableId || at.table_id),
+  tableNumber: at.tableNumber || at.table_number || 0,
+})),
     active: item.active ?? true,
     createdAt: new Date(item.created_at),
   }
@@ -45,6 +50,11 @@ export const employeesAdapter = {
     return normalizeEmployee(employee)
   },
 
+  async toggleTable(employeeId: string, tableId: string): Promise<Employee> {
+    const employee = await http.post<unknown, any>(`/employees/${employeeId}/toggle-table/${tableId}`, {})
+    return normalizeEmployee(employee)
+  },
+
   async getOrders(): Promise<EmployeeOrder[]> {
     const data = await http.get<unknown, any[]>('/employee-orders')
     return data.map(normalizeOrder)
@@ -58,4 +68,9 @@ export const employeesAdapter = {
     })
     return normalizeOrder(order)
   },
+
+  async delete(id: string): Promise<void> {
+    await http.delete(`/employees/${id}`)
+  },
 }
+

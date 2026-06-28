@@ -80,7 +80,7 @@ export const WordsPullUpMultiStyle = ({ segments, className = '', style }: Words
   )
 }
 
-/* ── PrismaHero NOA Beach ────────────────────────────────────────────────── */
+/* ── PrismaHero — adaptado para NOA Beach ───────────────────────────── */
 interface PrismaHeroProps {
   backgroundImage?: string
   title?: string
@@ -97,7 +97,7 @@ export const PrismaHero = ({
   ctaHref = '/contactos',
 }: PrismaHeroProps) => {
   return (
-    <section className="h-screen w-full" style={{ backgroundColor: '#2a364c' }}>
+    <section className="h-screen w-full">
       <div className="relative h-full w-full overflow-hidden rounded-none">
 
         {/* Background image */}
@@ -122,7 +122,7 @@ export const PrismaHero = ({
             <div className="col-span-12 lg:col-span-8">
               <h1
                 className="font-display font-medium leading-[0.85] tracking-[-0.04em] text-[18vw] sm:text-[16vw] md:text-[14vw] lg:text-[12vw] xl:text-[11vw]"
-                style={{ color: '#C9A96E' }}
+                style={{ color: '#7BB8CE' }}
               >
                 <WordsPullUp text={title} />
               </h1>
@@ -134,7 +134,7 @@ export const PrismaHero = ({
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="text-xs sm:text-sm md:text-base"
-                style={{ color: 'rgba(245,242,236,0.8)', lineHeight: 1.4 }}
+                style={{ color: 'rgba(248,246,240,0.8)', lineHeight: 1.4 }}
               >
                 {subtitle}
               </motion.p>
@@ -145,12 +145,12 @@ export const PrismaHero = ({
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 className="group inline-flex items-center gap-2 self-start rounded-full py-1 pl-5 pr-1 text-sm font-medium transition-all hover:gap-3 sm:text-base"
-                style={{ backgroundColor: '#C9A96E', color: '#0D1B2A' }}
+                style={{ backgroundColor: '#7BB8CE', color: '#181818' }}
               >
                 {ctaLabel}
                 <span className="flex h-9 w-9 items-center justify-center rounded-full transition-transform group-hover:scale-110 sm:h-10 sm:w-10"
-                  style={{ backgroundColor: '#0D1B2A' }}>
-                  <ArrowRight className="h-4 w-4" style={{ color: '#C9A96E' }} />
+                  style={{ backgroundColor: '#181818' }}>
+                  <ArrowRight className="h-4 w-4" style={{ color: '#7BB8CE' }} />
                 </span>
               </motion.a>
             </div>
@@ -164,7 +164,7 @@ export const PrismaHero = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.6 }}
           className="absolute top-6 left-6 text-xs tracking-[0.25em] uppercase"
-          style={{ color: 'rgba(201,169,110,0.7)' }}
+          style={{ color: 'rgba(217,208,181,0.7)' }}
         >
           Luanda · Angola
         </motion.div>
@@ -173,3 +173,5 @@ export const PrismaHero = ({
     </section>
   )
 }
+
+
