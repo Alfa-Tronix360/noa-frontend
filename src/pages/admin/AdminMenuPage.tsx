@@ -63,7 +63,7 @@ export default function AdminMenuPage() {
   async function uploadImage(file: File): Promise<string> {
     const formData = new FormData()
     formData.append('file', file)
-    formData.append('upload_preset', 'noa_beach')
+    formData.append('upload_preset', 'palace_lounge')
     const res = await fetch('https://api.cloudinary.com/v1_1/dkcq4gtxp/image/upload', {
       method: 'POST',
       body: formData,
@@ -149,13 +149,13 @@ export default function AdminMenuPage() {
       <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
         className="flex items-start justify-between gap-4 flex-wrap">
         <div>
-          <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#C9A96E' }}>Gestão</p>
+          <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#B89A67' }}>Gestão</p>
           <h1 className="font-display text-3xl text-primary">Cardápio</h1>
         </div>
         <button
           onClick={() => setOpen(true)}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all hover:opacity-90"
-          style={{ backgroundColor: '#7BB8CE', color: '#181818' }}
+          style={{ backgroundColor: '#D9D0B5', color: '#181818' }}
         >
           <Plus className="w-4 h-4" />
           Novo Item
@@ -326,7 +326,7 @@ export default function AdminMenuPage() {
                 onClick={handleSubmit}
                 disabled={isPending || uploading || !form.name || !form.price}
                 className="px-4 py-2 rounded-md text-sm font-medium transition-all hover:opacity-90 disabled:opacity-50"
-                style={{ backgroundColor: '#7BB8CE', color: '#181818' }}
+                style={{ backgroundColor: '#D9D0B5', color: '#181818' }}
               >
                 {uploading ? 'A carregar imagem...' : isPending ? 'A guardar...' : 'Guardar'}
               </button>
@@ -337,4 +337,3 @@ export default function AdminMenuPage() {
     </div>
   )
 }
-

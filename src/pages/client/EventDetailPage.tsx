@@ -159,7 +159,7 @@ export default function EventDetailPage() {
                                             )}
                                         >
                                             <p className="text-xs text-muted-foreground">{option.label}</p>
-                                            <p className="text-sm font-semibold mt-0.5" style={{ color: '#C9A96E' }}>
+                                            <p className="text-sm font-semibold mt-0.5" style={{ color: '#B89A67' }}>
                                                 {formatCurrency(option.price)}
                                             </p>
                                         </button>
@@ -182,7 +182,7 @@ export default function EventDetailPage() {
                                 </div>
                                 <div className="flex justify-between text-sm font-semibold border-t border-border pt-2 mt-2">
                                     <span>Total</span>
-                                    <span style={{ color: '#C9A96E' }}>{formatCurrency(selectedPrice)}</span>
+                                    <span style={{ color: '#B89A67' }}>{formatCurrency(selectedPrice)}</span>
                                 </div>
                             </div>
                         )}
@@ -191,7 +191,7 @@ export default function EventDetailPage() {
                             onClick={() => purchaseMutation.mutate()}
                             disabled={!selectedType || purchaseMutation.isPending}
                             className="w-full py-3 rounded-md text-sm font-medium transition-all hover:opacity-90 disabled:opacity-50 flex items-center justify-center gap-2"
-                            style={{ backgroundColor: '#7BB8CE', color: '#181818' }}
+                            style={{ backgroundColor: '#D9D0B5', color: '#181818' }}
                         >
                             <Ticket className="w-4 h-4" />
                             {purchaseMutation.isPending ? 'A comprar...' : 'Confirmar compra'}
@@ -223,7 +223,7 @@ export default function EventDetailPage() {
                                         )}
                                     >
                                         <p className="text-xs text-muted-foreground">{option.label}</p>
-                                        <p className="text-sm font-semibold mt-0.5" style={{ color: '#C9A96E' }}>
+                                        <p className="text-sm font-semibold mt-0.5" style={{ color: '#B89A67' }}>
                                             {formatCurrency(option.price)}
                                         </p>
                                     </button>
@@ -234,7 +234,7 @@ export default function EventDetailPage() {
                             onClick={() => setShowPriceModal(false)}
                             disabled={!selectedType}
                             className="w-full py-3 rounded-md text-sm font-medium transition-all hover:opacity-90 disabled:opacity-50"
-                            style={{ backgroundColor: '#7BB8CE', color: '#181818' }}
+                            style={{ backgroundColor: '#D9D0B5', color: '#181818' }}
                         >
                             OK
                         </button>
@@ -244,4 +244,3 @@ export default function EventDetailPage() {
         </div>
     )
 }
-

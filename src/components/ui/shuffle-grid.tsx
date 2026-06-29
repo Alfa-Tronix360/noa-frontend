@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 
-/* ── Imagens do NOA Beach ───────────────────────────────────────────── */
+/* ── Imagens do Palace Lounge ───────────────────────────────────────────── */
 const palaceImages = [
   { id: 1,  src: '/images/gallery-01.png' },
   { id: 2,  src: '/images/gallery-02.png' },
@@ -83,7 +83,7 @@ const ShuffleGrid = () => {
   )
 }
 
-/* ── ShuffleHero — adaptado para NOA Beach ──────────────────────────── */
+/* ── ShuffleHero — adaptado para Palace Lounge ──────────────────────────── */
 interface ShuffleHeroProps {
   tag?: string
   title?: string
@@ -94,9 +94,9 @@ interface ShuffleHeroProps {
 }
 
 export const ShuffleHero = ({
-  tag = 'Galeria NOA Beach',
+  tag = 'Galeria Palace Lounge',
   title = 'Momentos que ficam na memória',
-  description = 'Descubra os espaços, os pratos e as experiências que tornam o NOA Beach único em Luanda.',
+  description = 'Descubra os espaços, os pratos e as experiências que tornam o Palace Lounge único em Luanda.',
   ctaLabel = 'Ver Galeria Completa',
   ctaHref = '/galeria',
   className,
@@ -104,7 +104,7 @@ export const ShuffleHero = ({
   return (
     <section className={cn('w-full px-8 py-16 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto', className)}>
       <div>
-        <span className="block mb-4 text-xs md:text-sm font-medium tracking-[0.2em] uppercase" style={{ color: '#C9A96E' }}>
+        <span className="block mb-4 text-xs md:text-sm font-medium tracking-[0.2em] uppercase" style={{ color: '#B89A67' }}>
           {tag}
         </span>
         <h3 className="font-display text-4xl md:text-5xl font-medium text-foreground leading-tight">
@@ -119,7 +119,7 @@ export const ShuffleHero = ({
             'inline-block font-medium py-2.5 px-6 rounded-md text-sm',
             'transition-all hover:opacity-90 active:scale-95'
           )}
-          style={{ backgroundColor: '#7BB8CE', color: '#181818' }}
+          style={{ backgroundColor: '#D9D0B5', color: '#181818' }}
         >
           {ctaLabel}
         </a>
@@ -128,5 +128,3 @@ export const ShuffleHero = ({
     </section>
   )
 }
-
-

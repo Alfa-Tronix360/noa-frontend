@@ -53,7 +53,7 @@ export function MenuItemsTable({ onEdit }: Props) {
           <div>
             <p className="font-medium text-foreground text-sm">{row.original.name}</p>
             {row.original.featured && (
-              <span className="text-[10px] font-medium" style={{ color: '#C9A96E' }}>Destaque</span>
+              <span className="text-[10px] font-medium" style={{ color: '#B89A67' }}>Destaque</span>
             )}
           </div>
         </div>
@@ -72,7 +72,7 @@ export function MenuItemsTable({ onEdit }: Props) {
       accessorKey: 'price',
       header: 'Preço',
       cell: ({ row }) => (
-        <span className="font-semibold" style={{ color: '#C9A96E' }}>{formatCurrency(row.original.price)}</span>
+        <span className="font-semibold" style={{ color: '#B89A67' }}>{formatCurrency(row.original.price)}</span>
       ),
     },
     {
@@ -128,4 +128,3 @@ export function MenuItemsTable({ onEdit }: Props) {
     <DataTable columns={columns} data={data} searchPlaceholder="Pesquisar itens do cardápio…" />
   )
 }
-

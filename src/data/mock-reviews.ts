@@ -24,10 +24,8 @@ export const mockReviews: Review[] = [
     clientId: 'cl-1', clientName: 'Dr. António Bento',
     reservationId: 'r-10',
     rating: 5,
-    comment: 'O NOA Beach é simplesmente o melhor restaurante de Luanda. Recomendo vivamente.',
+    comment: 'O Palace Lounge é simplesmente o melhor restaurante de Luanda. Recomendo vivamente.',
     service: 5, atmosphere: 5, food: 5, drinks: 5,
     createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 5),
   },
 ]
-
-

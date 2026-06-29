@@ -75,7 +75,7 @@ export default function RegisterPage() {
       >
         {/* Header */}
         <div className="text-center">
-          <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#C9A96E' }}>
+          <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#B89A67' }}>
             Bem-vindo
           </p>
           <h1 className="font-display text-3xl text-primary">{APP_NAME}</h1>
@@ -172,7 +172,7 @@ export default function RegisterPage() {
               type="submit"
               disabled={isSubmitting}
               className="w-full flex items-center justify-center gap-2 py-2.5 rounded-md text-sm font-medium transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-50"
-              style={{ backgroundColor: '#7BB8CE', color: '#181818' }}
+              style={{ backgroundColor: '#D9D0B5', color: '#181818' }}
             >
               {isSubmitting
                 ? <span className="w-4 h-4 border-2 border-charcoal border-t-transparent rounded-full animate-spin" />
@@ -210,5 +210,3 @@ function Field({ label, error, children }: { label: string; error?: string; chil
     </div>
   )
 }
-
-

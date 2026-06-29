@@ -18,5 +18,3 @@ export function useMediaQuery(query: string): boolean {
 
 export const useIsMobile = () => useMediaQuery('(max-width: 768px)')
 export const useIsTablet = () => useMediaQuery('(max-width: 1024px)')
-
-

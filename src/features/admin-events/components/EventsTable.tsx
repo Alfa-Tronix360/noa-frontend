@@ -91,7 +91,7 @@ export function EventsTable() {
       accessorKey: 'budget',
       header: 'Orçamento',
       cell: ({ row }) => row.original.budget
-        ? <span className="font-medium" style={{ color: '#C9A96E' }}>{formatCurrency(row.original.budget)}</span>
+        ? <span className="font-medium" style={{ color: '#B89A67' }}>{formatCurrency(row.original.budget)}</span>
         : <span className="text-muted-foreground text-xs">—</span>,
     },
     {
@@ -183,4 +183,3 @@ export function EventsTable() {
     </>
   )
 }
-

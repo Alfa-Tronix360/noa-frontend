@@ -35,18 +35,17 @@ export function RevenueChart() {
         <AreaChart data={chartData} margin={{ top: 4, right: 8, left: 8, bottom: 0 }}>
           <defs>
             <linearGradient id="receitaGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#7BB8CE" stopOpacity={0.3} />
-              <stop offset="95%" stopColor="#7BB8CE" stopOpacity={0.02} />
+              <stop offset="5%" stopColor="#D9D0B5" stopOpacity={0.3} />
+              <stop offset="95%" stopColor="#D9D0B5" stopOpacity={0.02} />
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
           <XAxis dataKey="month" tick={{ fill: '#A89A85', fontSize: 11 }} axisLine={false} tickLine={false} />
           <YAxis tickFormatter={fmt} tick={{ fill: '#A89A85', fontSize: 11 }} axisLine={false} tickLine={false} />
           <Tooltip contentStyle={tooltipStyle} formatter={(v) => [`${(Number(v) / 1000000).toFixed(2)}M AOA`, '']} />
-          <Area type="monotone" dataKey="receita" name="Receita" stroke="#7BB8CE" strokeWidth={2} fill="url(#receitaGrad)" />
+          <Area type="monotone" dataKey="receita" name="Receita" stroke="#D9D0B5" strokeWidth={2} fill="url(#receitaGrad)" />
         </AreaChart>
       </ResponsiveContainer>
     </div>
   )
 }
-

@@ -14,5 +14,3 @@ export const mockTables: Table[] = [
   { id: 't-11', number: 11, capacity: 2, location: 'indoor', status: 'available' },
   { id: 't-12', number: 12, capacity: 4, location: 'indoor', status: 'maintenance', description: 'Em manutenção até 10/06' },
 ]
-
-

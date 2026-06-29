@@ -77,7 +77,7 @@ export default function RecepcionistaPage() {
         <div className="min-h-screen bg-background p-6 space-y-6">
             <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="flex items-center justify-between">
                 <div>
-                    <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#C9A96E' }}>Receção</p>
+                    <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#B89A67' }}>Receção</p>
                     <h1 className="font-display text-3xl text-primary">Painel do Rececionista</h1>
                     <p className="text-muted-foreground text-sm mt-1">Registe reservas por telefone e acompanhe as reservas do dia.</p>
                 </div>
@@ -194,4 +194,3 @@ export default function RecepcionistaPage() {
         </div>
     )
 }
-

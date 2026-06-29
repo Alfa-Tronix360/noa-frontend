@@ -41,4 +41,3 @@ export const tablesAdapter = {
     return normalizeTable(data)
   },
 }
-

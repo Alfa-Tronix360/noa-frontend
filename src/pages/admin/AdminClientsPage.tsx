@@ -20,7 +20,7 @@ export default function AdminClientsPage() {
   return (
     <div className="space-y-6">
       <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
-        <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#C9A96E' }}>Gestão</p>
+        <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#B89A67' }}>Gestão</p>
         <h1 className="font-display text-3xl text-primary">Clientes</h1>
       </motion.div>
 
@@ -37,4 +37,3 @@ export default function AdminClientsPage() {
     </div>
   )
 }
-

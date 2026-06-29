@@ -6,7 +6,7 @@ import { Masonry, GalleryImage } from '@/components/ui/masonry'
 const images = Array.from({ length: 17 }, (_, i) => ({
   id: i + 1,
   src: `/images/gallery-${String(i + 1).padStart(2, '0')}.png`,
-  alt: `NOA Beach — imagem ${i + 1}`,
+  alt: `Palace Lounge — imagem ${i + 1}`,
 }))
 
 export default function GalleryPage() {
@@ -29,12 +29,12 @@ export default function GalleryPage() {
         transition={{ duration: 0.6 }}
         className="mb-12"
       >
-        <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#C9A96E' }}>
-          NOA Beach
+        <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#B89A67' }}>
+          Palace Lounge
         </p>
         <h1 className="font-display text-4xl md:text-5xl text-foreground">Galeria</h1>
         <p className="text-muted-foreground mt-3 max-w-lg">
-          Espaços, momentos e experiências que definem o NOA Beach. Clique numa imagem para ampliar.
+          Espaços, momentos e experiências que definem o Palace Lounge. Clique numa imagem para ampliar.
         </p>
       </motion.div>
 
@@ -112,5 +112,3 @@ export default function GalleryPage() {
     </div>
   )
 }
-
-

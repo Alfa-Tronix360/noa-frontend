@@ -76,5 +76,3 @@ export const mockPayments: Payment[] = [
     date: d(-1),
   },
 ]
-
-

@@ -80,7 +80,7 @@ export const WordsPullUpMultiStyle = ({ segments, className = '', style }: Words
   )
 }
 
-/* ── PrismaHero — adaptado para NOA Beach ───────────────────────────── */
+/* ── PrismaHero — adaptado para Palace Lounge ───────────────────────────── */
 interface PrismaHeroProps {
   backgroundImage?: string
   title?: string
@@ -91,7 +91,7 @@ interface PrismaHeroProps {
 
 export const PrismaHero = ({
   backgroundImage = '/images/gallery-01.png',
-  title = 'NOA Beach',
+  title = 'Palace Lounge',
   subtitle = 'Uma experiência gastronómica única no coração de Luanda. Ambiente sofisticado, gastronomia premium e serviço personalizado.',
   ctaLabel = 'Reservar Mesa',
   ctaHref = '/contactos',
@@ -103,7 +103,7 @@ export const PrismaHero = ({
         {/* Background image */}
         <img
           src={backgroundImage}
-          alt="NOA Beach"
+          alt="Palace Lounge"
           className="absolute inset-0 h-full w-full object-cover"
         />
 
@@ -122,7 +122,7 @@ export const PrismaHero = ({
             <div className="col-span-12 lg:col-span-8">
               <h1
                 className="font-display font-medium leading-[0.85] tracking-[-0.04em] text-[18vw] sm:text-[16vw] md:text-[14vw] lg:text-[12vw] xl:text-[11vw]"
-                style={{ color: '#7BB8CE' }}
+                style={{ color: '#D9D0B5' }}
               >
                 <WordsPullUp text={title} />
               </h1>
@@ -145,12 +145,12 @@ export const PrismaHero = ({
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 className="group inline-flex items-center gap-2 self-start rounded-full py-1 pl-5 pr-1 text-sm font-medium transition-all hover:gap-3 sm:text-base"
-                style={{ backgroundColor: '#7BB8CE', color: '#181818' }}
+                style={{ backgroundColor: '#D9D0B5', color: '#181818' }}
               >
                 {ctaLabel}
                 <span className="flex h-9 w-9 items-center justify-center rounded-full transition-transform group-hover:scale-110 sm:h-10 sm:w-10"
                   style={{ backgroundColor: '#181818' }}>
-                  <ArrowRight className="h-4 w-4" style={{ color: '#7BB8CE' }} />
+                  <ArrowRight className="h-4 w-4" style={{ color: '#D9D0B5' }} />
                 </span>
               </motion.a>
             </div>
@@ -173,5 +173,3 @@ export const PrismaHero = ({
     </section>
   )
 }
-
-

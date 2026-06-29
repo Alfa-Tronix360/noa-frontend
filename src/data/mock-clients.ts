@@ -136,5 +136,3 @@ export const mockStaffUser: User = {
   reservationCount: 0,
   createdAt: new Date('2024-01-01'),
 }
-
-

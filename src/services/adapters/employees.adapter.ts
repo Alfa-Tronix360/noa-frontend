@@ -73,4 +73,3 @@ export const employeesAdapter = {
     await http.delete(`/employees/${id}`)
   },
 }
-

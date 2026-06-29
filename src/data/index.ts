@@ -5,5 +5,3 @@ export { mockReservations } from './mock-reservations'
 export { mockEvents } from './mock-events'
 export { mockPayments } from './mock-payments'
 export { mockReviews } from './mock-reviews'
-
-

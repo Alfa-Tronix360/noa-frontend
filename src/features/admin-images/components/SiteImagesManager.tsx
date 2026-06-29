@@ -87,5 +87,3 @@ export function SiteImagesManager() {
         </div>
     )
 }
-
-

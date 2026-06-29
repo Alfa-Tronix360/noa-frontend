@@ -399,14 +399,14 @@ function TicketSales() {
                     className={cn('rounded-lg border p-3 text-left transition-colors',
                       selectedType === option.key ? 'border-primary bg-primary/10' : 'border-border bg-surface hover:border-primary/50')}>
                     <p className="text-xs text-muted-foreground">{option.label}</p>
-                    <p className="text-sm font-semibold mt-0.5" style={{ color: '#C9A96E' }}>{formatCurrency(option.price)}</p>
+                    <p className="text-sm font-semibold mt-0.5" style={{ color: '#B89A67' }}>{formatCurrency(option.price)}</p>
                   </button>
                 ))}
               </div>
             </div>
             <button onClick={() => setShowPriceModal(false)} disabled={!selectedType}
               className="w-full py-3 rounded-md text-sm font-medium transition-all hover:opacity-90 disabled:opacity-50"
-              style={{ backgroundColor: '#7BB8CE', color: '#181818' }}>
+              style={{ backgroundColor: '#D9D0B5', color: '#181818' }}>
               OK
             </button>
           </div>
@@ -421,7 +421,7 @@ function DigitalTicketCard({ ticket, events, phone }: { ticket: DigitalTicket; e
   const digits = (phone || ticket.clientPhone || '').replace(/\D/g, '')
   const whatsappUrl = ticket.whatsappUrl || (digits
     ? `https://wa.me/${digits}?text=${encodeURIComponent([
-      'Convite digital NOA Beach',
+      'Convite digital Palace Lounge',
       event ? `Evento: ${event.title}` : undefined,
       `Mesa: ${ticket.tableNumber}`,
       `Codigo QR: ${ticket.qrCode}`,
@@ -518,5 +518,3 @@ export default function ClientEventsPage() {
     </div>
   )
 }
-
-

@@ -25,4 +25,3 @@ export function useSiteImages() {
 
   return { resolve }
 }
-

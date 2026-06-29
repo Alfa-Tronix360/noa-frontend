@@ -18,5 +18,3 @@ export function ReservationStatusBadge({ status, className }: ReservationStatusB
     </span>
   )
 }
-
-

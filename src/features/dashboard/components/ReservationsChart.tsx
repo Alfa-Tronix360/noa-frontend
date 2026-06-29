@@ -41,11 +41,10 @@ export function ReservationsChart() {
           <YAxis tick={{ fill: '#A89A85', fontSize: 11 }} axisLine={false} tickLine={false} />
           <Tooltip contentStyle={tooltipStyle} cursor={{ fill: 'rgba(255,255,255,0.04)' }} />
           <Legend formatter={(v) => <span style={{ color: '#A89A85', fontSize: 11 }}>{v}</span>} />
-          <Bar dataKey="reservas" name="Confirmadas" fill="#7BB8CE" radius={[3, 3, 0, 0]} />
+          <Bar dataKey="reservas" name="Confirmadas" fill="#D9D0B5" radius={[3, 3, 0, 0]} />
           <Bar dataKey="canceladas" name="Canceladas" fill="#C74A4A" radius={[3, 3, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>
   )
 }
-

@@ -27,4 +27,3 @@ export const SITE_IMAGE_SLOTS = [
 ] as const
 
 export type SiteImageKey = typeof SITE_IMAGE_SLOTS[number]['key']
-

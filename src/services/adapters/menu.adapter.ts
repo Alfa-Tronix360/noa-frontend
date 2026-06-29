@@ -57,4 +57,3 @@ export const menuAdapter = {
     await http.delete(`/menu/${id}`)
   },
 }
-

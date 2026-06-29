@@ -345,5 +345,3 @@ export interface PaymentFilters {
   dateFrom?: Date
   dateTo?: Date
 }
-
-

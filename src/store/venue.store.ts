@@ -61,7 +61,7 @@ interface VenueState {
 }
 
 const initialAreas: VenueArea[] = [
-  { id: 'area-vip', name: 'Zona VIP', shape: 'rectangle', x: 5, y: 24, width: 22, height: 58, color: '#7BB8CE', ticketPrice: 60000, description: 'Mesas premium e vista frontal.' },
+  { id: 'area-vip', name: 'Zona VIP', shape: 'rectangle', x: 5, y: 24, width: 22, height: 58, color: '#D9D0B5', ticketPrice: 60000, description: 'Mesas premium e vista frontal.' },
   { id: 'area-main', name: 'Sala principal', shape: 'rectangle', x: 30, y: 24, width: 42, height: 58, color: '#A89A85', ticketPrice: 35000, description: 'Area central do Palace.' },
   { id: 'area-outdoor', name: 'Exterior', shape: 'rectangle', x: 75, y: 28, width: 18, height: 50, color: '#4A7CC7', ticketPrice: 25000, description: 'Zona exterior.' },
 ]
@@ -78,7 +78,7 @@ const initialTables: Table[] = mockTables.map((table, index) => ({
   y: positions[index]?.[1] ?? 40,
   areaId: table.location === 'vip' ? 'area-vip' : table.location === 'outdoor' ? 'area-outdoor' : 'area-main',
   priceTier: table.location === 'vip' ? 'vip' : table.location === 'outdoor' ? 'premium' : 'standard',
-  description: table.description ?? `Mesa ${table.number} do NOA Beach`,
+  description: table.description ?? `Mesa ${table.number} do Palace Lounge`,
 }))
 
 function buildSeats(tables: Table[], areas: VenueArea[]): TicketSeat[] {
@@ -101,7 +101,7 @@ function buildWhatsAppTicketUrl(ticket: DigitalTicket, event?: PublishedEvent, p
   const digits = (phone || ticket.clientPhone || '').replace(/\D/g, '')
   if (!digits) return undefined
   const text = [
-    `Convite digital NOA Beach`,
+    `Convite digital Palace Lounge`,
     event ? `Evento: ${event.title}` : undefined,
     `Mesa: ${ticket.tableNumber}`,
     `Codigo QR: ${ticket.qrCode}`,
@@ -127,7 +127,7 @@ export const useVenueStore = create<VenueState>()(
           name: `Area ${get().areas.length + 1}`,
           shape: 'rectangle',
           x: 12, y: 30, width: 24, height: 28,
-          color: '#C9A96E',
+          color: '#B89A67',
           ticketPrice: 25000,
         }
         http.post('/venue/areas', {
@@ -465,4 +465,3 @@ export const tableLocationOptions: Array<{ value: TableLocation; label: string }
   { value: 'outdoor', label: 'Exterior' },
   { value: 'vip', label: 'VIP' },
 ]
-

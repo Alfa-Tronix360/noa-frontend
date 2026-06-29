@@ -15,7 +15,7 @@ export default function OperacionalCozinhaPage() {
     return (
         <div className="space-y-6">
             <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
-                <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#C9A96E' }}>Operacional</p>
+                <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#B89A67' }}>Operacional</p>
                 <h1 className="font-display text-3xl text-primary">Fluxo Cozinha</h1>
                 <p className="mt-1 text-sm text-muted-foreground">Pedidos de pratos em tempo real. Actualiza a cada 30 segundos.</p>
             </motion.div>
@@ -42,7 +42,7 @@ export default function OperacionalCozinhaPage() {
                             </div>
                             <div className="pt-2 border-t border-border flex justify-between text-sm">
                                 <span className="text-muted-foreground">Total</span>
-                                <span className="font-semibold" style={{ color: '#C9A96E' }}>{formatCurrency(pedido.total)}</span>
+                                <span className="font-semibold" style={{ color: '#B89A67' }}>{formatCurrency(pedido.total)}</span>
                             </div>
                             <p className="text-xs text-muted-foreground">
                                 {new Date(pedido.created_at).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })}
@@ -58,4 +58,3 @@ export default function OperacionalCozinhaPage() {
         </div>
     )
 }
-

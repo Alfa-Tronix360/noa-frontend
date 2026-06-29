@@ -20,4 +20,3 @@ export const publishedEventsAdapter = {
     return normalizeEvent(data)
   },
 }
-

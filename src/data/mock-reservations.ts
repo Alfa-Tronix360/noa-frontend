@@ -105,5 +105,3 @@ export const mockReservations: Reservation[] = [
     createdAt: d(-1),
   },
 ]
-
-

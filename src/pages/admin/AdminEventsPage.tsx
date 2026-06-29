@@ -602,7 +602,7 @@ export default function AdminEventsPage() {
   async function uploadBanner(file: File): Promise<string> {
     const formData = new FormData()
     formData.append('file', file)
-    formData.append('upload_preset', 'noa_beach')
+    formData.append('upload_preset', 'palace_lounge')
     const res = await fetch('https://api.cloudinary.com/v1_1/dkcq4gtxp/image/upload', {
       method: 'POST',
       body: formData,
@@ -678,7 +678,7 @@ export default function AdminEventsPage() {
   return (
     <div className="space-y-6">
       <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
-        <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#C9A96E' }}>Gestão</p>
+        <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#B89A67' }}>Gestão</p>
         <h1 className="font-display text-3xl text-primary">Eventos</h1>
       </motion.div>
 
@@ -945,4 +945,3 @@ export default function AdminEventsPage() {
     </div>
   )
 }
-

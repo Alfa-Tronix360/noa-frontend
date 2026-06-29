@@ -30,4 +30,3 @@ export const ticketsAdapter = {
     return Array.isArray(data) ? data : []
   },
 }
-

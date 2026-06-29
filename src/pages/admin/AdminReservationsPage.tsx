@@ -22,7 +22,7 @@ export default function AdminReservationsPage() {
     <div className="space-y-6">
       <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="flex items-start justify-between gap-4 flex-wrap">
         <div>
-          <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#C9A96E' }}>Gestão</p>
+          <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#B89A67' }}>Gestão</p>
           <h1 className="font-display text-3xl text-primary">Reservas</h1>
         </div>
         <CreateReservationDialog />
@@ -41,4 +41,3 @@ export default function AdminReservationsPage() {
     </div>
   )
 }
-

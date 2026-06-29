@@ -85,7 +85,7 @@ export default function AdminEmployeesPage() {
   return (
     <div className="space-y-6">
       <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
-        <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#C9A96E' }}>Equipa</p>
+        <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#B89A67' }}>Equipa</p>
         <h1 className="font-display text-3xl text-primary">Funcionarios</h1>
         <p className="text-muted-foreground text-sm mt-1">Cadastre atendentes, atribua mesas e lance pedidos por mesa.</p>
       </motion.div>
@@ -238,4 +238,3 @@ function RankingCard({ title, subtitle, items }: { title: string; subtitle: stri
     </section>
   )
 }
-

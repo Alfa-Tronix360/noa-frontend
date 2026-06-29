@@ -68,8 +68,8 @@ export default function MenuPage() {
       {/* Header */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-          <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#C9A96E' }}>
-            NOA Beach
+          <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#B89A67' }}>
+            Palace Lounge
           </p>
           <h1 className="font-display text-4xl md:text-5xl text-foreground">Cardápio</h1>
           <p className="text-muted-foreground mt-2 max-w-lg">
@@ -178,7 +178,7 @@ export default function MenuPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   {item.featured && (
                     <span className="absolute top-2 left-2 text-[10px] font-semibold px-2 py-0.5 rounded-full"
-                      style={{ backgroundColor: '#C9A96E', color: '#181818' }}>
+                      style={{ backgroundColor: '#B89A67', color: '#181818' }}>
                       Destaque
                     </span>
                   )}
@@ -197,7 +197,7 @@ export default function MenuPage() {
                   <p className="text-sm font-medium text-foreground leading-tight line-clamp-2 group-hover:text-primary transition-colors">
                     {item.name}
                   </p>
-                  <p className="text-sm font-semibold mt-1.5" style={{ color: '#C9A96E' }}>
+                  <p className="text-sm font-semibold mt-1.5" style={{ color: '#B89A67' }}>
                     {formatCurrency(item.price)}
                   </p>
                 </div>
@@ -212,7 +212,7 @@ export default function MenuPage() {
         <ShuffleHero
           tag="Os nossos espaços"
           title="Cada visita é uma nova experiência"
-          description="Reserve a sua mesa e descubra o NOA Beach em toda a sua sofisticação."
+          description="Reserve a sua mesa e descubra o Palace Lounge em toda a sua sofisticação."
           ctaLabel="Reservar Agora"
           ctaHref="/contactos"
         />
@@ -233,11 +233,9 @@ function TabButton({ active, onClick, children }: { active: boolean; onClick: ()
           ? 'text-primary-foreground border-transparent'
           : 'border-border text-muted-foreground hover:border-primary/40 hover:text-foreground'
       )}
-      style={active ? { backgroundColor: '#7BB8CE', color: '#181818' } : {}}
+      style={active ? { backgroundColor: '#D9D0B5', color: '#181818' } : {}}
     >
       {children}
     </button>
   )
 }
-
-

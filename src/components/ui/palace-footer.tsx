@@ -116,7 +116,7 @@ export const PalaceFooter = ({ className }: PalaceFooterProps) => {
         <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 hover:border-primary/40 duration-300 backdrop-blur-sm rounded-3xl bg-surface/60 border-2 border-border flex items-center justify-center p-3">
           <div
             className="w-14 h-14 md:w-20 md:h-20 rounded-2xl flex items-center justify-center shadow-lg"
-            style={{ background: 'linear-gradient(135deg, #7BB8CE, #C9A96E)' }}
+            style={{ background: 'linear-gradient(135deg, #D9D0B5, #B89A67)' }}
           >
             <span className="font-display text-2xl md:text-3xl font-bold text-charcoal">P</span>
           </div>
@@ -130,5 +130,3 @@ export const PalaceFooter = ({ className }: PalaceFooterProps) => {
     </section>
   )
 }
-
-

@@ -27,4 +27,3 @@ async upload(key: string, file: File): Promise<SiteImage> {
     await http.delete(`/site-images/${key}`)
   },
 }
-

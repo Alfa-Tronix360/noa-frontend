@@ -125,7 +125,7 @@ function TicketModal({ event, onClose }: { event: PublishedEvent; onClose: () =>
                                     ].filter(o => o.price > 0).map(option => (
                                         <div key={option.label} className="rounded-lg border border-border bg-surface p-3">
                                             <p className="text-xs text-muted-foreground">{option.label}</p>
-                                            <p className="text-sm font-semibold mt-0.5" style={{ color: '#C9A96E' }}>
+                                            <p className="text-sm font-semibold mt-0.5" style={{ color: '#B89A67' }}>
                                                 {formatCurrency(option.price)}
                                             </p>
                                         </div>
@@ -138,7 +138,7 @@ function TicketModal({ event, onClose }: { event: PublishedEvent; onClose: () =>
                     <button
                         onClick={handleBuy}
                         className="w-full py-3 rounded-md text-sm font-medium transition-all hover:opacity-90 flex items-center justify-center gap-2"
-                        style={{ backgroundColor: '#7BB8CE', color: '#181818' }}
+                        style={{ backgroundColor: '#D9D0B5', color: '#181818' }}
                     >
                         <Ticket className="w-4 h-4" />
                         {user ? 'Selecionar mesa e comprar' : 'Entrar para comprar'}
@@ -163,7 +163,7 @@ export default function EventsPage() {
     return (
         <div className="max-w-6xl mx-auto px-4 py-12 space-y-10">
             <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
-                <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#C9A96E' }}>NOA Beach</p>
+                <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#B89A67' }}>Palace Lounge</p>
                 <h1 className="font-display text-4xl text-primary">Eventos</h1>
                 <p className="mt-2 text-muted-foreground">Descubra os próximos eventos e garanta o seu lugar.</p>
             </motion.div>
@@ -213,13 +213,13 @@ export default function EventsPage() {
                                 <p className="text-sm text-muted-foreground line-clamp-2">{event.description}</p>
 
                                 <div className="flex items-center justify-between pt-2 border-t border-border">
-                                    <span className="text-sm font-semibold" style={{ color: '#C9A96E' }}>
+                                    <span className="text-sm font-semibold" style={{ color: '#B89A67' }}>
                                         A partir de {formatCurrency(event.basePrice)}
                                     </span>
                                     <button
                                         onClick={e => { e.stopPropagation(); setSelectedEvent(event) }}
                                         className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:opacity-90"
-                                        style={{ backgroundColor: '#7BB8CE', color: '#181818' }}
+                                        style={{ backgroundColor: '#D9D0B5', color: '#181818' }}
                                     >
                                         <Ticket className="w-3.5 h-3.5" />
                                         Ver bilhetes
@@ -241,4 +241,3 @@ export default function EventsPage() {
         </div>
     )
 }
-

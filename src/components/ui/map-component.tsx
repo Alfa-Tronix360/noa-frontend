@@ -104,7 +104,7 @@ interface MapMarkerProps {
   popupContent?: ReactNode
 }
 
-export function MapMarker({ coordinates, color = '#7BB8CE', popupContent }: MapMarkerProps) {
+export function MapMarker({ coordinates, color = '#D9D0B5', popupContent }: MapMarkerProps) {
   const { map, isLoaded } = useMap()
   const markerRef = useRef<MapLibreGL.Marker | null>(null)
   const popupRef  = useRef<MapLibreGL.Popup | null>(null)
@@ -173,5 +173,3 @@ export function MapControls() {
     </div>
   )
 }
-
-

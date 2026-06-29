@@ -30,7 +30,7 @@ export default function OperacionalDashboardPage() {
     return (
         <div className="space-y-6">
             <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
-                <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#C9A96E' }}>
+                <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#B89A67' }}>
                     {roleLabel[user?.role ?? ''] ?? 'Operacional'}
                 </p>
                 <h1 className="font-display text-3xl text-primary">Bom trabalho, {user?.name?.split(' ')[0]}!</h1>
@@ -79,4 +79,3 @@ export default function OperacionalDashboardPage() {
         </div>
     )
 }
-

@@ -56,7 +56,7 @@ export function TopClientsReport() {
             <XAxis type="number" tick={{ fill: '#A89A85', fontSize: 11 }} axisLine={false} tickLine={false} />
             <YAxis type="category" dataKey="name" tick={{ fill: '#A89A85', fontSize: 10 }} axisLine={false} tickLine={false} width={130} />
             <Tooltip contentStyle={tooltip} />
-            <Bar dataKey="gasto" name="Reservas" fill="#7BB8CE" radius={[0, 3, 3, 0]} />
+            <Bar dataKey="gasto" name="Reservas" fill="#D9D0B5" radius={[0, 3, 3, 0]} />
           </BarChart>
         </ResponsiveContainer>
       ) : (
@@ -82,7 +82,7 @@ export function OccupancyReport() {
           <XAxis dataKey="week" tick={{ fill: '#A89A85', fontSize: 11 }} axisLine={false} tickLine={false} />
           <YAxis domain={[0, 100]} tick={{ fill: '#A89A85', fontSize: 11 }} axisLine={false} tickLine={false} />
           <Tooltip contentStyle={tooltip} formatter={(v) => [`${v}%`, '']} />
-          <Line type="monotone" dataKey="taxa" name="Ocupação" stroke="#7BB8CE" strokeWidth={2.5} dot={{ fill: '#7BB8CE', r: 4 }} />
+          <Line type="monotone" dataKey="taxa" name="Ocupação" stroke="#D9D0B5" strokeWidth={2.5} dot={{ fill: '#D9D0B5', r: 4 }} />
         </LineChart>
       </ResponsiveContainer>
     </div>
@@ -94,7 +94,7 @@ export function TopProductsReport() {
     queryFn: () => http.get<unknown, any[]>('/reports/employees/sales'),
   })
 
-  const colors = ['#7BB8CE', '#C9A96E', '#A89A85', '#7a6a55', '#4a3f30']
+  const colors = ['#D9D0B5', '#B89A67', '#A89A85', '#7a6a55', '#4a3f30']
   const chartData = data.slice(0, 5).map((e, i) => ({
     name: e.employee_name,
     vendas: e.orders,
@@ -144,7 +144,7 @@ export function TopReservedTablesReport() {
             <XAxis dataKey="name" tick={{ fill: '#A89A85', fontSize: 11 }} axisLine={false} tickLine={false} />
             <YAxis tick={{ fill: '#A89A85', fontSize: 11 }} axisLine={false} tickLine={false} />
             <Tooltip contentStyle={tooltip} />
-            <Bar dataKey="reservas" name="Reservas" fill="#7BB8CE" radius={[3, 3, 0, 0]} />
+            <Bar dataKey="reservas" name="Reservas" fill="#D9D0B5" radius={[3, 3, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       ) : (
@@ -180,7 +180,7 @@ export function TableTicketRevenueReport() {
               tick={{ fill: '#A89A85', fontSize: 11 }} axisLine={false} tickLine={false} />
             <YAxis type="category" dataKey="name" tick={{ fill: '#A89A85', fontSize: 10 }} axisLine={false} tickLine={false} width={90} />
             <Tooltip contentStyle={tooltip} formatter={(v, name) => name === 'receita' ? [`${(Number(v) / 1000).toFixed(0)}K AOA`, 'Receita'] : [v, 'Convites']} />
-            <Bar dataKey="receita" name="Receita" fill="#C9A96E" radius={[0, 3, 3, 0]} />
+            <Bar dataKey="receita" name="Receita" fill="#B89A67" radius={[0, 3, 3, 0]} />
           </BarChart>
         </ResponsiveContainer>
       ) : (
@@ -216,7 +216,7 @@ export function TopEmployeesSalesReport() {
               tick={{ fill: '#A89A85', fontSize: 11 }} axisLine={false} tickLine={false} />
             <YAxis type="category" dataKey="name" tick={{ fill: '#A89A85', fontSize: 10 }} axisLine={false} tickLine={false} width={110} />
             <Tooltip contentStyle={tooltip} formatter={(v, name) => name === 'receita' ? [`${(Number(v) / 1000).toFixed(0)}K AOA`, 'Receita'] : [v, 'Pedidos']} />
-            <Bar dataKey="receita" name="Receita" fill="#7BB8CE" radius={[0, 3, 3, 0]} />
+            <Bar dataKey="receita" name="Receita" fill="#D9D0B5" radius={[0, 3, 3, 0]} />
           </BarChart>
         </ResponsiveContainer>
       ) : (
@@ -227,4 +227,3 @@ export function TopEmployeesSalesReport() {
     </div>
   )
 }
-

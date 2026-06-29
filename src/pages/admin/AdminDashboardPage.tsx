@@ -61,11 +61,11 @@ export default function AdminDashboardPage() {
     <div className="space-y-6">
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
-        <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#C9A96E' }}>
+        <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#B89A67' }}>
           {formatDate(new Date(), 'EEEE, dd MMMM yyyy')}
         </p>
         <h1 className="font-display text-3xl text-primary">Dashboard</h1>
-        <p className="text-muted-foreground text-sm mt-1">Visão geral das operações do NOA Beach</p>
+        <p className="text-muted-foreground text-sm mt-1">Visão geral das operações do Palace Lounge</p>
       </motion.div>
 
       {/* KPIs */}
@@ -89,5 +89,3 @@ export default function AdminDashboardPage() {
     </div>
   )
 }
-
-

@@ -43,7 +43,7 @@ export default function ContactsPage() {
       {/* Header */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
         <motion.div variants={fadeUp} initial="hidden" animate="visible">
-          <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#C9A96E' }}>
+          <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#B89A67' }}>
             Fale connosco
           </p>
           <h1 className="font-display text-4xl md:text-5xl text-foreground">Contactos</h1>
@@ -70,7 +70,7 @@ export default function ContactsPage() {
               >
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
                   style={{ backgroundColor: 'rgba(184,154,103,0.15)' }}>
-                  <item.icon className="w-5 h-5" style={{ color: '#C9A96E' }} />
+                  <item.icon className="w-5 h-5" style={{ color: '#B89A67' }} />
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground mb-0.5">{item.label}</p>
@@ -94,7 +94,7 @@ export default function ContactsPage() {
             style={{ height: '420px' }}
           >
             <Map className="w-full h-full" center={PALACE_COORDS} zoom={15}>
-              <MapMarker coordinates={PALACE_COORDS} color="#7BB8CE" label={APP_NAME} />
+              <MapMarker coordinates={PALACE_COORDS} color="#D9D0B5" label={APP_NAME} />
               <MapControls />
 
               {/* Overlay card */}
@@ -111,7 +111,7 @@ export default function ContactsPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         <div className="max-w-2xl">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-8">
-            <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#C9A96E' }}>Envie uma mensagem</p>
+            <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{ color: '#B89A67' }}>Envie uma mensagem</p>
             <h2 className="font-display text-3xl text-foreground">Como podemos ajudar?</h2>
           </motion.div>
 
@@ -155,7 +155,7 @@ export default function ContactsPage() {
                 type="submit"
                 disabled={isSubmitting}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-medium transition-all hover:opacity-90 active:scale-95 disabled:opacity-50"
-                style={{ backgroundColor: '#7BB8CE', color: '#181818' }}
+                style={{ backgroundColor: '#D9D0B5', color: '#181818' }}
               >
                 {isSubmitting
                   ? <><span className="w-4 h-4 border-2 border-charcoal border-t-transparent rounded-full animate-spin" /> A enviar…</>
@@ -198,5 +198,3 @@ function Field({ label, error, children }: { label: string; error?: string; chil
     </div>
   )
 }
-
-
