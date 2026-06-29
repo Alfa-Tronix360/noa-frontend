@@ -65,7 +65,7 @@ export default function AdminDashboardPage() {
           {formatDate(new Date(), 'EEEE, dd MMMM yyyy')}
         </p>
         <h1 className="font-display text-3xl text-primary">Dashboard</h1>
-        <p className="text-muted-foreground text-sm mt-1">Visão geral das operações do Palace Lounge</p>
+        <p className="text-muted-foreground text-sm mt-1">Visão geral das operações do NOA Beach</p>
       </motion.div>
 
       {/* KPIs */}

@@ -12,7 +12,7 @@ const fadeUp = {
 }
 
 const timeline = [
-  { year: '2018', title: 'Fundação', desc: 'O Palace Lounge abre as portas em Luanda com uma visão clara: elevar a gastronomia angolana a um nível premium.' },
+  { year: '2018', title: 'Fundação', desc: 'O NOA Beach abre as portas em Luanda com uma visão clara: elevar a gastronomia angolana a um nível premium.' },
   { year: '2020', title: 'Expansão do Cardápio', desc: 'Introduzimos o programa de degustação e a carta de vinhos curada pelo nosso sommelier exclusivo.' },
   { year: '2022', title: 'Programa VIP', desc: 'Lançamos o programa de fidelidade Palace VIP, dedicado aos nossos clientes mais especiais.' },
   { year: '2024', title: 'Renovação', desc: 'Renovação completa do espaço interior e lançamento das reservas digitais.' },
@@ -38,12 +38,12 @@ export default function AboutPage() {
 
       {/* Hero */}
       <section className="relative h-[60vh] overflow-hidden">
-        <img src={resolve('gallery-02')} alt="Palace Lounge" className="w-full h-full object-cover" />
+        <img src={resolve('gallery-02')} alt="NOA Beach" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/70" />
         <div className="absolute bottom-0 left-0 right-0 px-4 sm:px-6 lg:px-8 pb-12 max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#D9D0B5' }}>A nossa história</p>
-            <h1 className="font-display text-4xl md:text-6xl text-white">Sobre o Palace Lounge</h1>
+            <h1 className="font-display text-4xl md:text-6xl text-white">Sobre o NOA Beach</h1>
           </motion.div>
         </div>
       </section>
@@ -57,7 +57,7 @@ export default function AboutPage() {
               O melhor da gastronomia premium em Luanda
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>O Palace Lounge nasceu da paixão por criar momentos inesquecíveis. Desde a nossa fundação, temos sido o destino escolhido por executivos, famílias e casais que procuram uma experiência gastronómica à altura das melhores capitais do mundo.</p>
+              <p>O NOA Beach nasceu da paixão por criar momentos inesquecíveis. Desde a nossa fundação, temos sido o destino escolhido por executivos, famílias e casais que procuram uma experiência gastronómica à altura das melhores capitais do mundo.</p>
               <p>Localizado no coração de Luanda, o nosso restaurante combina um ambiente sofisticado com um serviço personalizado, uma cozinha criativa e uma curadoria de vinhos e cocktails que reflecte o melhor do mundo.</p>
               <p>Cada visita ao Palace é uma jornada sensorial — desde o acolhimento até à última sobremesa.</p>
             </div>
@@ -71,7 +71,7 @@ export default function AboutPage() {
           </motion.div>
 
           <motion.div variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <img src={resolve('gallery-03')} alt="Palace Lounge interior"
+            <img src={resolve('gallery-03')} alt="NOA Beach interior"
               className="rounded-2xl w-full h-[420px] object-cover border border-border/30" />
           </motion.div>
         </div>
@@ -140,7 +140,7 @@ export default function AboutPage() {
           {galleryKeys.map((key, i) => (
             <motion.div key={key} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
               transition={{ delay: i * 0.05 }} viewport={{ once: true }}>
-              <GalleryImage src={resolve(key)} alt={`Palace Lounge ${i + 1}`} />
+              <GalleryImage src={resolve(key)} alt={`NOA Beach ${i + 1}`} />
             </motion.div>
           ))}
         </Masonry>

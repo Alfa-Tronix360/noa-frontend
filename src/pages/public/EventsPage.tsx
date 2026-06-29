@@ -163,7 +163,7 @@ export default function EventsPage() {
     return (
         <div className="max-w-6xl mx-auto px-4 py-12 space-y-10">
             <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
-                <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#B89A67' }}>Palace Lounge</p>
+                <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#B89A67' }}>NOA Beach</p>
                 <h1 className="font-display text-4xl text-primary">Eventos</h1>
                 <p className="mt-2 text-muted-foreground">Descubra os próximos eventos e garanta o seu lugar.</p>
             </motion.div>

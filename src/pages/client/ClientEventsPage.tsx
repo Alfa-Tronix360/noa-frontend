@@ -421,7 +421,7 @@ function DigitalTicketCard({ ticket, events, phone }: { ticket: DigitalTicket; e
   const digits = (phone || ticket.clientPhone || '').replace(/\D/g, '')
   const whatsappUrl = ticket.whatsappUrl || (digits
     ? `https://wa.me/${digits}?text=${encodeURIComponent([
-      'Convite digital Palace Lounge',
+      'Convite digital NOA Beach',
       event ? `Evento: ${event.title}` : undefined,
       `Mesa: ${ticket.tableNumber}`,
       `Codigo QR: ${ticket.qrCode}`,

@@ -69,7 +69,7 @@ export default function MenuPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#B89A67' }}>
-            Palace Lounge
+            NOA Beach
           </p>
           <h1 className="font-display text-4xl md:text-5xl text-foreground">Cardápio</h1>
           <p className="text-muted-foreground mt-2 max-w-lg">
@@ -212,7 +212,7 @@ export default function MenuPage() {
         <ShuffleHero
           tag="Os nossos espaços"
           title="Cada visita é uma nova experiência"
-          description="Reserve a sua mesa e descubra o Palace Lounge em toda a sua sofisticação."
+          description="Reserve a sua mesa e descubra o NOA Beach em toda a sua sofisticação."
           ctaLabel="Reservar Agora"
           ctaHref="/contactos"
         />

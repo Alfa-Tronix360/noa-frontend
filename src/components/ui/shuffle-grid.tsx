@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 
-/* ── Imagens do Palace Lounge ───────────────────────────────────────────── */
+/* ── Imagens do NOA Beach ───────────────────────────────────────────── */
 const palaceImages = [
   { id: 1,  src: '/images/gallery-01.png' },
   { id: 2,  src: '/images/gallery-02.png' },
@@ -83,7 +83,7 @@ const ShuffleGrid = () => {
   )
 }
 
-/* ── ShuffleHero — adaptado para Palace Lounge ──────────────────────────── */
+/* ── ShuffleHero — adaptado para NOA Beach ──────────────────────────── */
 interface ShuffleHeroProps {
   tag?: string
   title?: string
@@ -94,9 +94,9 @@ interface ShuffleHeroProps {
 }
 
 export const ShuffleHero = ({
-  tag = 'Galeria Palace Lounge',
+  tag = 'Galeria NOA Beach',
   title = 'Momentos que ficam na memória',
-  description = 'Descubra os espaços, os pratos e as experiências que tornam o Palace Lounge único em Luanda.',
+  description = 'Descubra os espaços, os pratos e as experiências que tornam o NOA Beach único em Luanda.',
   ctaLabel = 'Ver Galeria Completa',
   ctaHref = '/galeria',
   className,

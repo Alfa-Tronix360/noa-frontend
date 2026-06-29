@@ -52,7 +52,7 @@ export default function HomePage() {
       {/* ── Hero ──────────────────────────────────────────────────────── */}
       <PrismaHero
         backgroundImage={resolve('gallery-01')}
-        title="Palace Lounge"
+        title="NOA Beach"
         subtitle="Uma experiência gastronómica única no coração de Luanda. Ambiente sofisticado, gastronomia premium e serviço personalizado."
         ctaLabel="Reservar Mesa"
         ctaHref={ROUTES.CONTACTS}
@@ -169,9 +169,9 @@ export default function HomePage() {
 
       {/* ── Galeria Shuffle ───────────────────────────────────────────── */}
       <ShuffleHero
-        tag="Galeria Palace Lounge"
+        tag="Galeria NOA Beach"
         title="Momentos que ficam na memória"
-        description="Descubra os espaços, os pratos e as experiências que tornam o Palace Lounge único em Luanda. Cada imagem é uma história."
+        description="Descubra os espaços, os pratos e as experiências que tornam o NOA Beach único em Luanda. Cada imagem é uma história."
         ctaLabel="Ver Galeria Completa"
         ctaHref={ROUTES.GALLERY}
       />
@@ -181,7 +181,7 @@ export default function HomePage() {
         <div className="absolute inset-0">
           <img
             src={resolve('gallery-12')}
-            alt="Eventos Palace Lounge"
+            alt="Eventos NOA Beach"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30" />
@@ -202,7 +202,7 @@ export default function HomePage() {
             </h2>
             <p className="text-base text-white/70 mb-8 leading-relaxed">
               Aniversários, casamentos, eventos corporativos e jantares privados.
-              Deixe que o Palace Lounge transforme a sua ocasião numa experiência inesquecível.
+              Deixe que o NOA Beach transforme a sua ocasião numa experiência inesquecível.
             </p>
             <Link
               to={ROUTES.CONTACTS}
@@ -233,7 +233,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             { name: 'Francisco Pinto Xavier', rating: 5, comment: 'Uma experiência absolutamente extraordinária. O serviço foi impecável e a comida sublime. Voltaremos com certeza.' },
-            { name: 'Dr. António Bento', rating: 5, comment: 'O Palace Lounge é simplesmente o melhor restaurante de Luanda. Recomendo vivamente.' },
+            { name: 'Dr. António Bento', rating: 5, comment: 'O NOA Beach é simplesmente o melhor restaurante de Luanda. Recomendo vivamente.' },
             { name: 'João Manuel Costa', rating: 4, comment: 'Excelente ambiente e boa comida. O tempo de espera entre pratos foi um pouco longo, mas no geral muito bom.' },
           ].map((r, i) => (
             <motion.div

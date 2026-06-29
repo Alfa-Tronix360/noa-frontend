@@ -80,7 +80,7 @@ export const WordsPullUpMultiStyle = ({ segments, className = '', style }: Words
   )
 }
 
-/* ── PrismaHero — adaptado para Palace Lounge ───────────────────────────── */
+/* ── PrismaHero — adaptado para NOA Beach ───────────────────────────── */
 interface PrismaHeroProps {
   backgroundImage?: string
   title?: string
@@ -91,7 +91,7 @@ interface PrismaHeroProps {
 
 export const PrismaHero = ({
   backgroundImage = '/images/gallery-01.png',
-  title = 'Palace Lounge',
+  title = 'NOA Beach',
   subtitle = 'Uma experiência gastronómica única no coração de Luanda. Ambiente sofisticado, gastronomia premium e serviço personalizado.',
   ctaLabel = 'Reservar Mesa',
   ctaHref = '/contactos',
@@ -103,7 +103,7 @@ export const PrismaHero = ({
         {/* Background image */}
         <img
           src={backgroundImage}
-          alt="Palace Lounge"
+          alt="NOA Beach"
           className="absolute inset-0 h-full w-full object-cover"
         />
 

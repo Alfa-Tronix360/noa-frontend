@@ -78,7 +78,7 @@ const initialTables: Table[] = mockTables.map((table, index) => ({
   y: positions[index]?.[1] ?? 40,
   areaId: table.location === 'vip' ? 'area-vip' : table.location === 'outdoor' ? 'area-outdoor' : 'area-main',
   priceTier: table.location === 'vip' ? 'vip' : table.location === 'outdoor' ? 'premium' : 'standard',
-  description: table.description ?? `Mesa ${table.number} do Palace Lounge`,
+  description: table.description ?? `Mesa ${table.number} do NOA Beach`,
 }))
 
 function buildSeats(tables: Table[], areas: VenueArea[]): TicketSeat[] {
@@ -101,7 +101,7 @@ function buildWhatsAppTicketUrl(ticket: DigitalTicket, event?: PublishedEvent, p
   const digits = (phone || ticket.clientPhone || '').replace(/\D/g, '')
   if (!digits) return undefined
   const text = [
-    `Convite digital Palace Lounge`,
+    `Convite digital NOA Beach`,
     event ? `Evento: ${event.title}` : undefined,
     `Mesa: ${ticket.tableNumber}`,
     `Codigo QR: ${ticket.qrCode}`,

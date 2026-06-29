@@ -23,7 +23,7 @@ export const Masonry = ({ children, className = '' }: MasonryProps) => {
   )
 }
 
-/* ── GalleryImage — card da galeria Palace Lounge ───────────────────────── */
+/* ── GalleryImage — card da galeria NOA Beach ───────────────────────── */
 interface GalleryImageProps {
   src: string
   alt?: string
@@ -31,7 +31,7 @@ interface GalleryImageProps {
   onClick?: () => void
 }
 
-export const GalleryImage = ({ src, alt = 'Palace Lounge', className, onClick }: GalleryImageProps) => {
+export const GalleryImage = ({ src, alt = 'NOA Beach', className, onClick }: GalleryImageProps) => {
   return (
     <div
       onClick={onClick}

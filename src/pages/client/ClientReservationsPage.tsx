@@ -506,7 +506,7 @@ function TransferRequestForm() {
           Pedido de Transfer
         </h2>
         <p className="mt-1 text-sm text-muted-foreground">
-          Solicite uma viatura para o seu evento ou visita ao Palace Lounge.
+          Solicite uma viatura para o seu evento ou visita ao NOA Beach.
         </p>
       </div>
 
